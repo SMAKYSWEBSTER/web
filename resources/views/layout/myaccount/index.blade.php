@@ -12,6 +12,7 @@
 				'enctype' => 'multipart/form-data',
 			]) !!}
 			<div class="content">
+				<h1>My Account</h1>
 				<input class="get-preview" type="file" name="propic" accept="image/*">
 				<label class="inp">
 					<input type="text" class="image-upload-input" placeholder="&nbsp;">
@@ -20,7 +21,7 @@
 				</label>
 			</div>
 			<div class="action-bar">
-				<input type="submit" value="Upload">
+				<input class="btn" type="submit" value="Upload">
 				<button type="button" class="btn img" tabindex="-1">select an image</button>
 			</div>
 				{{ csrf_field() }}

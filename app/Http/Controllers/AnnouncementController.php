@@ -40,11 +40,11 @@ class AnnouncementController extends Controller
     public function index()
     {
         $session = $this->session();
-		$user = User::where(['username'=>$session])->get();
+		$users = User::where(['username'=>$session])->get();
 		$selfs = Announcement::where(['username'=>$session])->latest()->get();
 		$generals = Announcement::latest()->get();
 
-		return view('layout.announcement.index', ['user'=>$user, 'generals'=>$generals, 'selfs'=>$selfs]);
+		return view('layout.announcement.index', ['users'=>$users, 'generals'=>$generals, 'selfs'=>$selfs]);
     }
 
     /**
@@ -84,6 +84,7 @@ class AnnouncementController extends Controller
      */
     public function show(Announcement $announcement)
     {
+        // dd($announcement->propic);
         return view('layout.announcement.show', ['announcement'=>$announcement]);
     }
 

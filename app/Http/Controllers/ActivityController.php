@@ -27,7 +27,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $albumcovers = Albumcover::all();
+        $albumcovers = Albumcover::latest()->get();
 
 		return view('layout.activity.index', ['albumcovers'=>$albumcovers]);
     }
@@ -58,7 +58,7 @@ class ActivityController extends Controller
         $activity = new Albumcover;
         $this->handleUpload($request,$activity);
 
-        return view('layout.success');
+        return redirect()->route('activity.index');
     }
 
     /**

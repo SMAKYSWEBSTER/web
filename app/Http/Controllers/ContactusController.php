@@ -36,7 +36,7 @@ class ContactusController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-			'name'=>'required|max:15',
+			'name'=>'required|max:30',
 			'email'=>'required|email',
 			'phone'=>'required|numeric',
 			'topic'=>'required',
@@ -51,7 +51,7 @@ class ContactusController extends Controller
 		$contactus->details = $request->Input('details');
 		$contactus->save();
 
-		return view('layout.contactus.success');
+		return view('layout.success');
     }
 
     /**

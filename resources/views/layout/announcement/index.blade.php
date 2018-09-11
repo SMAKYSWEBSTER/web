@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="banner-wrapper">
+<div class="wrapper banner">
     @if (Auth::check() == true)
         @foreach($selfs as $self)
             <div class="wrapper announcement">

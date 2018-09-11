@@ -1,0 +1,33 @@
+.card-body.facility {
+  height: 25rem;
+  width: 32rem;
+}
+
+.card-body.facility .card-img {
+  height: 100%;
+  width: 100%;
+}
+
+.card-body.facility .card-img::before {
+  opacity: .3;
+  height: 25rem;
+  width: 32rem;
+}
+
+.card-body.facility .card-img > img {
+  height: 25rem;
+  width: 32rem;
+}
+
+.card-body.facility > h1 {
+  border-bottom: #eee solid 3px;
+  padding-bottom: 1rem;
+  width: 50%;
+  color: #fff;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+

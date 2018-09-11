@@ -33,10 +33,9 @@ Route::resource('manage', 'ManageController');
 Route::get('/myaccount', 'MyaccountController@index')->name('myaccount.index');
     Route::patch('/myaccount/{myaccount}/firstupdate', 'MyaccountController@firstupdate')->name('myaccount.firstupdate');
     Route::patch('/myaccount/{myaccount}/lastupdate', 'MyaccountController@lastupdate')->name('myaccount.lastupdate');
-    Route::view('/myaccountsuccess', 'layout.success');
 
 Route::view('/', 'layout.home')->name('layout.home');
 Route::view('/extracurricular', 'layout.extracurricular')->name('layout.extracurricular');
 Route::view('/history', 'layout.history')->name('layout.history');
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');

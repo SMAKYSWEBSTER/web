@@ -20,9 +20,10 @@ class AchievementController extends Controller
     private function validation($request)
     {
         $this->validate($request, [
-			    'title'=>'required|max:100',
-			    'name'=>'required|max:100',
-	            'date'=>'required',
+			    'title' => 'required|max:100',
+			    'name' => 'required|max:100',
+                'rank' => 'required|numeric',
+	            'date' => 'required',
 		]);
     }
 
@@ -33,7 +34,7 @@ class AchievementController extends Controller
      */
     public function index()
     {
-        $achievements = Achievement::all();
+        $achievements = Achievement::latest()->get();
 
         return view('layout.achievement.index', ['achievements'=>$achievements]);
     }

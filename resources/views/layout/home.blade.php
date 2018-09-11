@@ -1,14 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- @include('layout.login.session') --}}
-<h1 class="centered-text">SMAKYS Website</h1>
+<div class="wrapper banner">
+  @include('layout.login.session')
+  <h1>SMAKYS Website</h1>
+</div>
 <div class="wrapper image-slider">
   <img src="https://images.pexels.com/photos/8633/nature-tree-green-pine.jpg" class="active">
-  <img src="https://www.planwallpaper.com/static/cache/41/08/410827afadb535c2eb3b22c16692b1be.jpg">
-  {{-- <img src="">
-  <img src="">
-  <img src=""> --}}
+  <img src="" alt="lol">
   <span class="prev"><i class="fas fa-chevron-left"></i></span>
   <span class="next"><i class="fas fa-chevron-right"></i></span>
 </div>

@@ -25,13 +25,13 @@
 $(document).ready(function()
 {
   //Header Logout
-  $('#logoutButton').on('click', function() {
+  $(this).on('click', '#logoutButton', function() {
     event.preventDefault();
-    $('#logoutForm').submit();
+    $('#logoutForm').trigger('submit');
   });
 
-  //Image Slider Prev Button
-  $('.image-slider > span.next').on('click', function() {
+  //Image Slider Next Button
+  $(this).on('click', 'span.next', function() {
     $current = $(this).siblings('img.active');
     $next = $current.next('img');
     if($next.length != 0) {
@@ -44,8 +44,8 @@ $(document).ready(function()
     }
   });
 
-  // Image Slider Next Button
-  $('.image-slider > span.prev').on('click', function() {
+  // Image Slider Prev Button
+  $(this).on('click','span.prev', function() {
     $current = $(this).siblings('img.active');
     $prev = $current.prev('img');
     if($prev.length != 0) {

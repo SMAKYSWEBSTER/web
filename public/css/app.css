@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Lato);/*!
+@import url(https://fonts.googleapis.com/css?family=Raleway);/*!
  * Font Awesome Free 5.2.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
@@ -4888,7 +4888,7 @@ body {
 }
 
 body {
-  font-family: Lato, sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 h1 {
@@ -4913,6 +4913,14 @@ h4 {
 
 .sign {
   text-align: right;
+}
+
+.capitalized {
+  text-transform: capitalize;
+}
+
+select {
+  font-family: inherit;
 }
 
 .btn {
@@ -5060,6 +5068,10 @@ h4 {
   transition: all .15s ease;
 }
 
+#logoutButton {
+  cursor: pointer;
+}
+
 #logoutForm {
   display: none;
 }
@@ -5118,6 +5130,12 @@ h4 {
   color: #fff;
 }
 
+.info {
+  color: #31708F;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
 .error {
   color: #a94442;
   background-color: #f2dede;
@@ -5132,6 +5150,7 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 0 calc((100% - 75rem)/2);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -5160,7 +5179,7 @@ header > .toggle {
 }
 
 header > nav {
-  background-color: rgba(0, 119, 255, 0.85);
+  background-color: #fff;
   width: 100%;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
@@ -5168,7 +5187,7 @@ header > nav {
 }
 
 header > nav a {
-  color: #fff;
+  color: #0077ff;
   display: block;
   text-decoration: none;
 }
@@ -5191,6 +5210,7 @@ header > nav > ul > li > ul {
 }
 
 header > nav > ul > li > ul > li > a {
+  color: #fff;
   padding: 1rem;
 }
 
@@ -5221,10 +5241,10 @@ header > nav > ul > li > a {
 header > nav > ul > li > a::after {
   content: '';
   position: absolute;
-  bottom: .75rem;
+  bottom: 0;
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: #0077ff;
   height: .25rem;
   -webkit-transform-origin: center;
           transform-origin: center;
@@ -5264,7 +5284,7 @@ header > nav > ul > li:last-of-type > a::after {
 footer {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 3rem 10%;
+  padding: 3rem calc((100% - 75rem)/2);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5285,12 +5305,7 @@ footer > .top {
           align-items: center;
 }
 
-footer > .top > .info {
-  margin: 1rem 3rem;
-}
-
 footer > .top > .icons {
-  margin: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -5348,7 +5363,7 @@ footer > .copyright {
 
 .wrapper {
   position: relative;
-  padding: 2rem 10%;
+  padding: 2rem calc((100% - 75rem)/2);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -5415,6 +5430,7 @@ footer > .copyright {
 }
 
 .wrapper.card > .card-body > .card-img > h2 {
+  color: #fff;
   position: absolute;
   margin: 0 0 0 .5rem;
   top: calc(100% - 2.5rem);
@@ -5556,13 +5572,13 @@ footer > .copyright {
 
 .wrapper.announcement {
   background-color: #eee;
+  width: 75rem;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
           flex-flow: column;
   margin: 2rem 0;
   text-align: left;
-  padding: 1rem 10%;
   height: 12rem;
 }
 
@@ -5574,7 +5590,7 @@ footer > .copyright {
       -ms-flex-align: center;
           align-items: center;
   text-transform: capitalize;
-  padding-bottom: .5rem;
+  padding: 0 1rem .5rem 1rem;
   border-bottom: 1px solid #ddd;
 }
 
@@ -5697,12 +5713,13 @@ footer > .copyright {
 }
 
 .wrapper.image-slider {
-  height: 45vw;
-  width: 80vw;
+  height: 42.1875rem;
+  width: 75rem;
   position: relative;
   -ms-flex-item-align: center;
       align-self: center;
-  margin: 1rem 0;
+  margin: 1rem calc((100%-75rem)/2);
+  padding: 0;
 }
 
 .wrapper.image-slider > img {
@@ -5785,6 +5802,9 @@ footer > .copyright {
 
 .wrapper.manage {
   background-color: #eee;
+  width: 75rem;
+  padding: 2rem 0;
+  margin: 1rem auto;
 }
 
 .wrapper.manage > .profile-info {
@@ -5795,7 +5815,7 @@ footer > .copyright {
   -webkit-box-direction: normal;
       -ms-flex-flow: column wrap;
           flex-flow: column wrap;
-  padding-bottom: .5rem;
+  padding: 0 1rem .5rem 1rem;
   border-bottom: 1px solid #ddd;
 }
 
@@ -5811,7 +5831,7 @@ footer > .copyright {
 
 .wrapper.manage > .details {
   border-bottom: 1px solid #ddd;
-  padding: .5rem;
+  padding: .5rem 1rem;
 }
 
 .wrapper.manage > .desc {

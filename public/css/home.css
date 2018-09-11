@@ -1,0 +1,85 @@
+.image-slider {
+  height: 607.5px;
+  width: 67.5rem;
+  position: relative;
+  -ms-flex-item-align: center;
+      align-self: center;
+  margin: 1rem 0;
+}
+
+.image-slider > img {
+  min-width: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  transition: ease-in-out .5s;
+  -webkit-transition: ease-in-out .5s;
+  -moz-transition: ease-in-out .5s;
+  -ms-transition: ease-in-out .5s;
+  -o-transition: ease-in-out .5s;
+}
+
+.image-slider > img.active {
+  opacity: 1;
+}
+
+.image-slider > span {
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  padding: 2rem 1rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -ms-transition: opacity .25s ease-in-out;
+  -o-transition: opacity .25s ease-in-out;
+}
+
+.image-slider > span.next {
+  right: 0;
+}
+
+.image-slider:hover > span {
+  opacity: 1;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.pic {
+  height: 15rem;
+  width: 15rem;
+  border-radius: 10px;
+  position: relative;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.image-slider > img,
+.pic {
+  max-height: 100%;
+  min-height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .image-slider {
+    padding-top: 56.25%;
+    width: 100%;
+    height: 56.25%;
+  }
+}
+

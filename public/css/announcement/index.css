@@ -1,0 +1,53 @@
+.announcement-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #eee;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.announcement-wrapper > .profile-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-transform: capitalize;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.announcement-wrapper > .profile-info > img {
+  height: 4em;
+  width: 4em;
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.announcement-wrapper > .profile-info > .publisher {
+  width: 100%;
+  margin-left: 1rem;
+  text-align: left;
+}
+
+.announcement-wrapper > .profile-info > .date_created {
+  width: 100%;
+  margin-right: 1rem;
+  text-align: right;
+}
+
+.announcement-wrapper > .action-bar {
+  text-align: right;
+}
+
+.announcement-wrapper > .desc {
+  padding: .5rem 1rem;
+}
+

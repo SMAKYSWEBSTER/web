@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<div class="banner-wrapper">
+	<div class="wrapper banner">
 		@foreach($deleteds as $deleted)
 			<div class="announcement-wrapper">
 				@include('layout.announcement.partial.content',['type'=>$deleted])
