@@ -5130,11 +5130,9 @@ select {
   color: #fff;
 }
 
-.info {
-  color: #31708F;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
-}
+/*.info {
+  color: #fff;
+}*/
 
 .error {
   color: #a94442;
@@ -5579,7 +5577,7 @@ footer > .copyright {
           flex-flow: column;
   margin: 2rem 0;
   text-align: left;
-  height: 12rem;
+  height: 13rem;
 }
 
 .wrapper.announcement > .profile-info {
