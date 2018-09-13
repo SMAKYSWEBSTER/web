@@ -55,6 +55,10 @@ h4 {
 	font-weight: bold;
 }
 
+p {
+	line-height: 1.25rem;
+}
+
 .sign {
 	text-align: right;
 }
@@ -239,29 +243,31 @@ text-align: center;
 	display: none;
 }
 
+.hidden {
+	display: none;
+}
+
+// Alert
+
 .alert {
 	font-size: 1rem;
     border: 1px solid black;
     padding: .5rem;
     border-radius: .5rem;
-    background-color: #000;
-    color: #fff;
-}
+	background-color: #000;
+	color: #fff;
 
-.info {
-	color: #31708F;
-	background-color: #d9edf7;
-	border-color: #bce8f1;
-}
+	&.info {
+		color: #31708F;
+		background-color: #d9edf7;
+		border-color: #bce8f1;
+	}
 
-.error {
-	color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
-}
-
-.hidden {
-	display: none;
+	&.error {
+		color: #a94442;
+		background-color: #f2dede;
+		border-color: #ebccd1;
+	}
 }
 
 
@@ -400,6 +406,11 @@ footer {
 		display: flex;
 		align-items: center;
 
+		& > .info {
+			color: #fff;
+			background-color: transparent;
+		}
+
 		& > .icons {
 			display: flex;
 			justify-content: flex-end;
@@ -476,7 +487,7 @@ footer {
 					opacity: .5;
 					top: 0;
 					left: 0;
-					width: 25em;
+					width: 100%;
 					height: 20em;
 					transition: opacity .25s ease-in-out;
 					-webkit-transition: opacity .25s ease-in-out;
@@ -881,6 +892,12 @@ footer {
 
 		& > .desc {
 			padding: .5rem 1rem;
+
+			& > p {
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
 		}
 
 		& > .action-bar {
@@ -980,7 +997,8 @@ footer {
 			-ms-transition: transform .25s ease-in-out;
 			-o-transition: transform .25s ease-in-out;
 
-				& > ul {
+			& > ul {
+				margin: 0;
 				display: block;
 
 				& > li {
@@ -989,9 +1007,15 @@ footer {
 						background: none;
 						margin-left: 1.5rem;
 
-						& > li > a:hover {
-							color: #fff;
-							background: none;
+						& > li {
+							& > a {
+								color: #0077FF;
+							}
+
+							& > a:hover {
+								color: #fff;
+								background: none;
+							}
 						}
 					}
 
@@ -1012,8 +1036,17 @@ footer {
 		}
 	}
 
+	.btn {
+		font-size: 0.9rem;
+	}
+
+	.action-bar {
+		box-sizing: border-box;
+	}
+
 	.wrapper {
-		padding: 4rem 1rem;
+		max-width: 100%;
+		padding: 2rem 1rem;
 
 		&.column {
 			flex-flow: row wrap;
@@ -1024,12 +1057,46 @@ footer {
 			}
 		}
 
-		&.banner {
-			text-align: left;
+		&.manage {
+			height: 15rem;
+
+			& .action-bar {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
 		}
 
-		&.card > .card-body.facility h1 {
-			font-size: 1.25rem;
+		&.announcement {
+			height: 15rem;
+
+			& .action-bar {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+		}
+
+		&.banner {
+			text-align: left;
+
+			& > img {
+				margin: 1em 0;
+			}
+
+			& > p {
+				margin: 0;
+			}
+		}
+
+		&.card {
+			& > .card-body {
+				margin: 1rem 0;
+			}
+			& > .card-body.facility h1 {
+				width: 75%;
+				font-size: 1.5rem;
+			}
 		}
 
 		&.image-slider {
@@ -1040,8 +1107,12 @@ footer {
 	}
 
 	footer {
+		& ul {
+			padding: 1rem 0;
+		}
 		& > .top {
-		flex-flow: column wrap;
+			padding: 1rem;
+			flex-flow: column wrap;
 
 			& > .info {
 				justify-content: center;
