@@ -2,19 +2,30 @@
 
 @section('content')
 <div class="wrapper banner">
-    @if (Auth::check() == true)
+
+    @if(Auth::check() == true)
+        <form action="{{ route('announcement.deleted') }}" method="POST" id="viewdeleted">
+          <input type="submit" value="View Deleted">
+          {{ csrf_field() }}
+        </form> <br>
+
+        {!! Form::open(['url'=>route('announcement.store'), 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+            <input type="hidden" name="username" value="{{ Auth::user()->username }}"> 
+            @foreach($users as $user)
+              <input type="hidden" name="propic" value="{{ $user->propic }}">
+            @endforeach
+            {!! Form::cTextarea('description') !!}
+            {!! Form::cInput('link') !!}
+            Upload file: <input type="file" name="file">
+            <input type="submit" value="Upload"> {{ csrf_field() }}
+            <span id="btn"></span>
+        {!! Form::close() !!}
+    @endif
+
+    @if(Auth::check() == true)
         @foreach($selfs as $self)
             <div class="wrapper announcement">
-                <div class="profile-info">
-                    <img src="propic/{{ $self->propic }}" width="100px" height="100px">
-                    <p class="publisher"> Publisher: {{ $self->username }} </p>
-                    <p class="date-created"> {{ $self->created_at }} </p>
-                </div>
-                <div class="desc">
-                    <p> {{ $self->description }} </p>
-                    <a href="{{ asset("/file/".$self->files) }}" download >{{ $self->files }}</a>
-                    <a href="{{ $self->link }}">{{ $self->link }}</a>
-                </div>
+                @include('layout.announcement.partial.content', ['type'=>$self])
                 <div class="action-bar">
                     <form action="{{ route('announcement.destroy', $self->id) }}" method="POST" class='delete'>
                         <input type="hidden" name="_method" value="delete">
@@ -35,16 +46,7 @@
     @else
         @foreach ($generals as $general)
             <div class="wrapper announcement">
-                <div class="profile-info">
-                    <img src="propic/{{ $general->propic }}" width="100px" height="100px">
-                    <p class="publisher"> Publisher: {{ $general->username }} </p>
-                    <p class="date-created"> {{ $general->created_at }} </p>
-                </div>
-                <div class="desc">
-                    <p> {{ $general->description }} </p>
-                    <a href="{{ asset("/file/".$general->files) }}" download >{{ $general->files }}</a>
-                    <a href="{{ $general->link }}">{{ $general->link }}</a>
-                </div>
+                @include('layout.announcement.partial.content', ['type'=>$general])
                 <div class="action-bar">
                     <form action="{{ route('announcement.show', $general->id) }}" method="GET">
                         <input class="btn" type="submit" value="View More">

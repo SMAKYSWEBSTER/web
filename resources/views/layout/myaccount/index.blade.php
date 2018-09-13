@@ -14,11 +14,6 @@
 			<div class="content">
 				<h1>My Account</h1>
 				<input class="get-preview" type="file" name="propic" accept="image/*">
-				<label class="inp">
-					<input type="text" class="image-upload-input" placeholder="&nbsp;">
-					<span class="label">Update Profile Picture</span>
-					<span class="border"></span>
-				</label>
 			</div>
 			<div class="action-bar">
 				<input class="btn" type="submit" value="Upload">

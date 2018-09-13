@@ -3,35 +3,14 @@
 @section('content')
   @if(Auth::check() == true && Auth::user()->username == 'osis')
     <div class="wrapper card">
-      <form class="card-body" action="{{ route('achievement.update', $achievement->id) }}" method="POST" enctype="multipart/form-data">
+      {!! Form::open(['url'=>route('achievement.update', $achievement->id), 'method'=>'PATCH', 'enctype'=>'multipart/form-data', 'class'=>'card-body']) !!}
         <div class="content">
           <h1>Edit Achievement</h1>
-          <label class="inp">
-            <input type="text" name="title" placeholder="&nbsp;" value="{{ $achievement->title }}">
-            <span class="label">Edit Title</span>
-            <span class="border"></span>
-          </label>
-          <label class="inp">
-            <input type="text" name="name" placeholder="&nbsp;" value="{{ $achievement->name }}">
-            <span class="label">Edit Name</span>
-            <span class="border"></span>
-          </label>
-          <label class="inp">
-            <input type="text" name="rank" placeholder="&nbsp;" value="{{ $achievement->rank }}">
-            <span class="label">Edit Rank</span>
-            <span class="border"></span>
-          </label>
-          <label class="inp">
-            <input type="text" name="date" placeholder="&nbsp;" value="{{ $achievement->date }}">
-            <span class="label">Edit Date</span>
-            <span class="border"></span>
-          </label>
+          {!! Form::cInput('title', $achievement->title) !!}
+          {!! Form::cInput('name', $achievement->name) !!}
+          {!! Form::cInput('rank', $achievement->rank) !!}
+          {!! Form::cInput('date', $achievement->date) !!}
           <input class="get-preview" type="file" name="photo" value="{{ $achievement->photo }}" accept="image/*">
-          <label class="inp">
-            <input type="text" class="image-upload-input" placeholder="&nbsp;">
-            <span class="label">Edit Photo</span>
-            <span class="border"></span>
-          </label>
         </div>
         <input type="hidden" name="_method" value="patch">
         <div class="action-bar">
@@ -39,11 +18,8 @@
           <input class="btn" type="submit" value="Edit" id="input">
           <button type="button" class="btn img" tabindex="-1">select an image</button>
         </div>
-        {{-- <div class="img-preview">
-          <img src="preview" alt="No Photo Uploaded">
-        </div> --}}
         {{ csrf_field() }}
-      </form>
+      {!! Form::close() !!}
     </div>
   @else
   <div class="wrapper banner">
