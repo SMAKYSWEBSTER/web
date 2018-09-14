@@ -83,6 +83,13 @@ select {
 	}
 }
 
+.full {
+	height: auto;
+	p {
+		overflow: auto
+	}
+}
+
 // Button Styles
 
 .btn {

@@ -4939,6 +4939,14 @@ select {
   overflow: hidden;
 }
 
+.full {
+  height: auto;
+}
+
+.full p {
+  overflow: auto;
+}
+
 .btn {
   text-transform: uppercase;
   color: #FF1744;
