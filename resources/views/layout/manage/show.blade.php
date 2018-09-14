@@ -2,7 +2,7 @@
 
 @section('content')
 @if (Auth::check() == true && Auth::user()->username == 'tatausaha')
-    <div class="wrapper manage show">
+    <div class="wrapper manage">
         <div class="profile-info">
             <p class="publisher">Nama: {{ $manage->name }}</p>
             <p class="date-created">{{ $manage->created_at }}</p>
@@ -12,7 +12,7 @@
             <p>No.Telp: {{ $manage->phone }}</p>
             <p>Topik Yang Ditanya: {{ $manage->topic }}</p>
         </div>
-        <div class="desc">
+        <div class="desc full">
             <p>{{ $manage->details }}</p>
         </div>
         <div class="action-bar">

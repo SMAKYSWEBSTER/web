@@ -3,7 +3,7 @@
 @section('content')
 
 	<div class="wrapper banner">
-		<div class="wrapper announcement full">
+		<div class="wrapper announcement">
 			@include('layout.announcement.partial.content', ['type'=>$announcement])
 		</div>
 	</div>

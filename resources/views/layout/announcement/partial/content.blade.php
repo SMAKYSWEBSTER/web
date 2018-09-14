@@ -3,7 +3,7 @@
     <p class="publisher"> Publisher: {{ $type->username }} </p>
     <p class="date_created"> {{ $type->created_at }} </p>
 </div>
-<div class="desc">
+<div class="desc full">
     <p> {{ $type->description }} </p>
     <a href="{{ asset("/file/".$type->files) }}" download >{{ $type->files }}</a>
     <a href="https://{{ $type->link }}">{{ $type->link }}</a>
