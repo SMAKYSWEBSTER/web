@@ -4944,7 +4944,7 @@ select {
 }
 
 .full p {
-  overflow: auto;
+  overflow: initial;
 }
 
 .btn {
