@@ -71,6 +71,17 @@ select {
 	font-family: inherit;
 }
 
+.desc {
+	padding: .5rem 1rem;
+	height: 1.25rem;
+
+	& > p {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+}
+
 // Button Styles
 
 .btn {
@@ -653,7 +664,6 @@ footer {
 		flex-flow: column;
 		margin: 2rem 0;
 		text-align: left;
-		height: 12rem;
 
 		& > .profile-info {
 			display: flex;
@@ -687,16 +697,6 @@ footer {
 		& > .action-bar {
 			justify-content: flex-end;
 			text-align: right;
-		}
-
-		& > .desc {
-			padding: .5rem 1rem;
-
-			& > p {
-				white-space: nowrap;
-				text-overflow: ellipsis;
-				overflow: hidden;
-			}
 		}
 	}
 
@@ -888,16 +888,6 @@ footer {
 		& > .details {
 			border-bottom: 1px solid #ddd;
 			padding: .5rem 1rem;
-		}
-
-		& > .desc {
-			padding: .5rem 1rem;
-
-			& > p {
-				white-space: nowrap;
-				text-overflow: ellipsis;
-				overflow: hidden;
-			}
 		}
 
 		& > .action-bar {

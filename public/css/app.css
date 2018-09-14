@@ -4927,6 +4927,17 @@ select {
   font-family: inherit;
 }
 
+.desc {
+  padding: .5rem 1rem;
+  height: 1.25rem;
+}
+
+.desc > p {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .btn {
   text-transform: uppercase;
   color: #FF1744;
@@ -5588,7 +5599,6 @@ footer > .copyright {
           flex-flow: column;
   margin: 2rem 0;
   text-align: left;
-  height: 12rem;
 }
 
 .wrapper.announcement > .profile-info {
@@ -5628,16 +5638,6 @@ footer > .copyright {
       -ms-flex-pack: end;
           justify-content: flex-end;
   text-align: right;
-}
-
-.wrapper.announcement > .desc {
-  padding: .5rem 1rem;
-}
-
-.wrapper.announcement > .desc > p {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .wrapper.banner {
@@ -5841,16 +5841,6 @@ footer > .copyright {
 .wrapper.manage > .details {
   border-bottom: 1px solid #ddd;
   padding: .5rem 1rem;
-}
-
-.wrapper.manage > .desc {
-  padding: .5rem 1rem;
-}
-
-.wrapper.manage > .desc > p {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .wrapper.manage > .action-bar {
