@@ -4943,6 +4943,10 @@ select {
   height: auto;
 }
 
+.full .desc {
+  height: auto;
+}
+
 .full p {
   display: block;
   overflow: initial;

@@ -86,6 +86,10 @@ select {
 .full {
 	height: auto;
 
+	.desc {
+		height: auto;
+	}
+
 	p {
 		display: block;
 		overflow: initial;
