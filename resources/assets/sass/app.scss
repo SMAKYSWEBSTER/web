@@ -1048,6 +1048,16 @@ footer {
 		box-sizing: border-box;
 	}
 
+	.full {
+		desc {
+			height: auto;
+			& > p {
+				display: block;
+				overflow: hidden;
+			}
+		}
+	}
+
 	.wrapper {
 		max-width: 100%;
 		padding: 2rem 1rem;

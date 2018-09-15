@@ -6099,5 +6099,18 @@ footer > .copyright {
   footer > .copyright {
     text-align: center;
   }
+
+  .wrapper.full {
+    height: auto;
+  }
+
+  .wrapper.full .desc {
+    height: auto;
+  }
+
+  .wrapper.full .desc p {
+    display: block;
+    overflow: initial;
+  }
 }
 
