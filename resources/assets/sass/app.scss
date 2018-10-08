@@ -59,6 +59,10 @@ p {
 	line-height: 1.25rem;
 }
 
+.spaced {
+	letter-spacing: 5px;
+}
+
 .sign {
 	text-align: right;
 }
@@ -731,6 +735,7 @@ footer {
 		}
 
 		& > img {
+			margin: 1em 0;
 			width: 100%;
 		}
 
@@ -739,6 +744,15 @@ footer {
 			text-align: left;
 			display: inline-block;
 			width: 30%;
+		}
+
+		& > ul {
+			margin: 1rem 0;
+		}
+
+		& li {
+			text-align: left;
+			font-size: 1.25rem;
 		}
 	}
 
