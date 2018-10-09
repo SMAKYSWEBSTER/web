@@ -19,14 +19,12 @@
 
     <h2>FREE ENTRY!</h2>
     <p>Gratis masuk! Siapapun boleh masuk. Tanpa dipungut biaya apapun.</p>
-      <ul>
-        <li>---</li>
-        <li>••• KAPAN? •••</li>
+      <ul style="margin-left: 10rem;">
+        <li><h3>KAPAN?</h3></li>
         <li>Kamis, 11 Oktober - Sabtu, 13 Oktober 2018</li>
         <li>Pukul 08.00 - 15.00 WIB</li>
         <li>Di SMAK YOS SUDARSO BATAM, GOR</li>
-        <li>---</li>
       </ul>
-    <h2>TENTUKANLAH MASA DEPAN ANDA DI SINI</h2>
+    <p style="word-spacing: 0.3rem; font-size: 20px; letter-spacing: 5px;">TENTUKANLAH MASA DEPAN ANDA DI SINI</p>
   </div>
 @endsection

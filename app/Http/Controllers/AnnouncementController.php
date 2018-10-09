@@ -149,6 +149,6 @@ class AnnouncementController extends Controller
     {
         Announcement::where('id', $announcement)->forcedelete();
 
-		return redirect()->route('announcement.index');
+		return redirect()->route('announcement.deleted');
     }
 }
