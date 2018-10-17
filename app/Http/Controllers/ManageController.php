@@ -16,6 +16,9 @@ class ManageController extends Controller
     public function index()
     {
         $contact_us = Contactus::latest()->get();
+        // foreach ($contact_us as $contactus) {
+        //     dd($contactus->created_at);
+        // }
 
 		return view('layout.manage.index', ['contact_us'=>$contact_us]);
     }
