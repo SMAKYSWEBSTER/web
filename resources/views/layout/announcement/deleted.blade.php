@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
+    <form class="wrapper banner" action="{{ route('announcement.index') }}" method="GET" id="back">
+        <input class="btn" type="submit" value="BACK">
+        {{ csrf_field() }}
+    </form>
+
 	<div class="wrapper banner">
 		@foreach($deleteds as $deleted)
 			<div class="announcement-wrapper">

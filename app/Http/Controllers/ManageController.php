@@ -110,6 +110,6 @@ class ManageController extends Controller
     {
         Contactus::where('id', $manage)->forcedelete();
 
-        return redirect()->route('manage.index');
+        return redirect()->route('manage.readed.get');
     }
 }

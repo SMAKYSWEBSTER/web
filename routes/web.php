@@ -19,6 +19,7 @@ Route::resource('album', 'AlbumController');
 
 Route::resource('announcement', 'AnnouncementController');
     Route::post('/announcement/deleted', 'AnnouncementController@deleted')->name('announcement.deleted');
+    Route::get('/announcement/deleted/get', 'AnnouncementController@deleted')->name('announcement.deleted.get');
     Route::post('/announcement/{announcement}/restore', 'AnnouncementController@restore')->name('announcement.restore');
     Route::delete('/announcement/{announcement}/forcedelete', 'AnnouncementController@forcedelete')->name('announcement.forcedelete');
 
@@ -27,6 +28,7 @@ Route::resource('facility', 'FacilityController');
 
 Route::resource('manage', 'ManageController');
     Route::post('/manage/readed', 'ManageController@readed')->name('manage.readed');
+    Route::get('/manage/readed/get', 'ManageController@readed')->name('manage.readed.get');
     Route::post('/manage/{manage}/restore', 'ManageController@restore')->name('manage.restore');
     Route::delete('/manage/{manage}/forcedelete', 'ManageController@forcedelete')->name('manage.forcedelete');
 

@@ -13,6 +13,10 @@ class AnnouncementController extends Controller
 {
     private function uploadHandle($request,$announcement)
     {
+        if(str_contains($request->Input('link'),'https://www.youtube.com/watch?v=')) {
+            $video_id = str_after($request->Input('link'),'https://www.youtube.com/watch?v=');
+            $announcement->video_id = $video_id;
+        }
         $announcement->description = $request->Input('description');
         $announcement->link = $request->Input('link');
 		$files = Input::file('file');
@@ -149,6 +153,6 @@ class AnnouncementController extends Controller
     {
         Announcement::where('id', $announcement)->forcedelete();
 
-		return redirect()->route('announcement.deleted');
+		return redirect()->route('announcement.deleted.get');
     }
 }

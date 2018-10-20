@@ -6,5 +6,5 @@
 <div class="desc">
     <p> {{ $type->description }} </p>
     <a href="{{ asset("/file/".$type->files) }}" download >{{ $type->files }}</a>
-    <a href="https://{{ $type->link }}">{{ $type->link }}</a>
+    <a href="{{ $type->link }}">{{ $type->link }}</a>
 </div>

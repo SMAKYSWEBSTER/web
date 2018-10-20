@@ -5,9 +5,11 @@
 
     @if(Auth::check() == true)
         <form action="{{ route('announcement.deleted') }}" method="POST" id="viewdeleted">
-          <input type="submit" value="View Deleted">
-          {{ csrf_field() }}
-        </form> <br>
+            <input type="submit" value="View Deleted">
+            {{ csrf_field() }}
+        </form> 
+
+        <br>
 
         {!! Form::open(['url'=>route('announcement.store'), 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
             <input type="hidden" name="username" value="{{ Auth::user()->username }}"> 
