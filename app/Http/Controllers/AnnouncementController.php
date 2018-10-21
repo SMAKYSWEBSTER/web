@@ -19,11 +19,15 @@ class AnnouncementController extends Controller
         }
         $announcement->description = $request->Input('description');
         $announcement->link = $request->Input('link');
-		$files = Input::file('file');
+		$file = Input::file('file');
 		if(Input::hasFile('file')) {
-            $filename = $files->getClientOriginalName();
-            $location = public_path("file/");
-            $files->move($location, $filename);
+            $filename = $file->getClientOriginalName();
+            if(str_contains($file->getMimeType(), 'video')) {
+                $location = public_path("video/");
+            } else {
+                $location = public_path("file/");
+            }
+            $file->move($location, $filename);
             $announcement->files = $filename;
 		}
 		$announcement->save();
