@@ -4933,7 +4933,7 @@ select {
 
 .desc {
   padding: .5rem 1rem;
-  height: 2.5rem;
+  height: 3.5rem;
 }
 
 .desc > p {
@@ -4973,6 +4973,10 @@ select {
 .btn:hover {
   color: #fff;
   background-color: #FF1744;
+}
+
+a.btn {
+  text-decoration: none;
 }
 
 .inp {
@@ -5158,7 +5162,25 @@ select {
   display: none;
 }
 
+.youtube-player {
+  position: relative;
+  height: 0;
+  padding-top: 28.125%;
+  width: 50%;
+  margin: 1em auto;
+}
+
+.youtube-player iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .alert {
+  display: inline-block;
+  text-align: center;
   font-size: 1rem;
   border: 1px solid black;
   padding: .5rem;
@@ -5610,7 +5632,7 @@ footer > .copyright {
 
 .wrapper.announcement {
   background-color: #eee;
-  width: 75rem;
+  width: 100%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column;
@@ -5659,13 +5681,27 @@ footer > .copyright {
 }
 
 .wrapper.banner {
-  display: block;
-  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
 }
 
-.wrapper.banner > h1 {
-  margin: 1em 0;
+.wrapper.banner > h1,
+.wrapper.banner h2,
+.wrapper.banner h3,
+.wrapper.banner h4,
+.wrapper.banner h5,
+.wrapper.banner h6 {
+  margin: 1em auto;
+  text-align: center;
 }
 
 .wrapper.banner > p {
@@ -5674,7 +5710,7 @@ footer > .copyright {
 }
 
 .wrapper.banner > img {
-  margin: 1em 0;
+  margin: 1em auto;
   width: 100%;
 }
 
@@ -5692,6 +5728,21 @@ footer > .copyright {
 .wrapper.banner li {
   text-align: left;
   font-size: 1.25rem;
+}
+
+.wrapper.hero {
+  display: block;
+  text-align: center;
+}
+
+.wrapper.hero > h1,
+.wrapper.hero h2,
+.wrapper.hero h3,
+.wrapper.hero h4,
+.wrapper.hero h5,
+.wrapper.hero h6 {
+  margin: 1em auto;
+  text-align: center;
 }
 
 .wrapper.column {
@@ -5750,13 +5801,13 @@ footer > .copyright {
 }
 
 .wrapper.image-slider {
-  height: 42.1875rem;
-  width: 75rem;
+  height: 56.25%;
+  padding: 56.25% 0 0 0;
+  width: 100%;
   position: relative;
   -ms-flex-item-align: center;
       align-self: center;
-  margin: 1rem calc((100%-75rem)/2);
-  padding: 0;
+  margin: 1rem 0;
 }
 
 .wrapper.image-slider > img {
@@ -5839,7 +5890,7 @@ footer > .copyright {
 
 .wrapper.manage {
   background-color: #eee;
-  width: 75rem;
+  width: 100%;
   padding: 2rem 0;
   margin: 1rem auto;
 }
@@ -5985,6 +6036,10 @@ footer > .copyright {
     display: block;
   }
 
+  header > nav > ul > li {
+    display: block;
+  }
+
   header > nav > ul > li > ul {
     position: relative;
     background: none;
@@ -5997,7 +6052,7 @@ footer > .copyright {
 
   header > nav > ul > li > ul > li > a:hover {
     color: #fff;
-    background: none;
+    background: #0077FF;
   }
 
   header > nav > ul > li > a {
@@ -6007,6 +6062,11 @@ footer > .copyright {
     -moz-transition: opacity .1s ease-in-out;
     -ms-transition: opacity .1s ease-in-out;
     -o-transition: opacity .1s ease-in-out;
+  }
+
+  header > nav > ul > li > a:hover {
+    color: #fff;
+    background-color: #0077FF;
   }
 
   header > nav > ul > li > a::after {
@@ -6020,6 +6080,20 @@ footer > .copyright {
   .action-bar {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
+  }
+
+  .youtube-player {
+    padding-top: 56.25%;
+    width: 100%;
+  }
+
+  .full desc {
+    height: auto;
+  }
+
+  .full desc > p {
+    display: block;
+    overflow: hidden;
   }
 
   .wrapper {
@@ -6050,7 +6124,7 @@ footer > .copyright {
   }
 
   .wrapper.announcement {
-    height: 15rem;
+    height: auto;
   }
 
   .wrapper.announcement .action-bar {
@@ -6059,12 +6133,8 @@ footer > .copyright {
     right: 0;
   }
 
-  .wrapper.banner {
-    text-align: left;
-  }
-
   .wrapper.banner > img {
-    margin: 1em 0;
+    margin: 1em auto;
   }
 
   .wrapper.banner > p {
@@ -6078,12 +6148,6 @@ footer > .copyright {
   .wrapper.card > .card-body.facility h1 {
     width: 75%;
     font-size: 1.5rem;
-  }
-
-  .wrapper.image-slider {
-    padding-top: 56.25%;
-    width: 100%;
-    height: 56.25%;
   }
 
   footer ul {
@@ -6112,19 +6176,6 @@ footer > .copyright {
 
   footer > .copyright {
     text-align: center;
-  }
-
-  .wrapper.full {
-    height: auto;
-  }
-
-  .wrapper.full .desc {
-    height: auto;
-  }
-
-  .wrapper.full .desc p {
-    display: block;
-    overflow: initial;
   }
 }
 

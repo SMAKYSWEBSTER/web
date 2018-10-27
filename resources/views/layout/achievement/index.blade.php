@@ -3,25 +3,18 @@
 @section('content')
 <div class="wrapper banner">
   <h1>Achievements</h1>
+  @if(Auth::check() == true && Auth::user()->username == 'osis')
+  {!! Form::open(['url'=>route('achievement.store'), 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+    {!! Form::cInput('title') !!}
+    {!! Form::cInput('name') !!}
+    {!! Form::cInput('rank') !!}
+    {!! Form::cInput('date') !!}
+    <input type="file" name="photo">
+    <input type="submit" value="Upload">
+    {{ csrf_field() }}
+  {!! Form::close() !!}
+  @endif
 </div>
-
-@if(Auth::check() == true)  
-    @if(Auth::user()->username == 'osis')
-      <div class="wrapper card">
-        <div class="content">
-          {!! Form::open(['url'=>route('achievement.store'), 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
-            {!! Form::cInput('title') !!}
-            {!! Form::cInput('name') !!}
-            {!! Form::cInput('rank') !!}
-            {!! Form::cInput('date') !!}
-            <input type="file" name="photo">
-            <input type="submit" value="Upload">
-            {{ csrf_field() }}
-          {!! Form::close() !!}
-        </div>
-      </div>
-    @endif
-@endif
 
 <div class="wrapper card">
   @foreach($achievements as $achievement)
@@ -49,7 +42,7 @@
   @endforeach
 </div>
 <div class="modal image">
-  <img src="none" alt="No photo">
+  <img src="" alt="No photo">
   <span><i class="fas fa-times"></i></span>
 </div>
 @endsection

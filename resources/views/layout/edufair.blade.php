@@ -19,7 +19,7 @@
 
     <h2>FREE ENTRY!</h2>
     <p>Gratis masuk! Siapapun boleh masuk. Tanpa dipungut biaya apapun.</p>
-      <ul style="margin-left: 10rem;">
+      <ul style="align-self: center">
         <li><h3>KAPAN?</h3></li>
         <li>Kamis, 11 Oktober - Sabtu, 13 Oktober 2018</li>
         <li>Pukul 08.00 - 15.00 WIB</li>

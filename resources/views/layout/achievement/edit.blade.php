@@ -16,7 +16,7 @@
         <div class="action-bar">
           <a class="btn" href="{{ route('achievement.index') }}">back</a>
           <input class="btn" type="submit" value="Edit" id="input">
-          <button type="button" class="btn img" tabindex="-1">select an image</button>
+          <button type="button" class="btn file" tabindex="-1">select an image</button>
         </div>
         {{ csrf_field() }}
       {!! Form::close() !!}

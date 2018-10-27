@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="wrapper banner">
+<div class="wrapper hero">
   @include('layout.login.session')
   <h1>Welcome to SMAKYS Website !</h1>
 </div>

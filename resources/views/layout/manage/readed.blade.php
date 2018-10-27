@@ -2,7 +2,7 @@
 
 @section('content')
     @if(Auth::check() == true && Auth::user()->username == 'tatausaha')
-        <form class="wrapper banner" action="{{ route('manage.index') }}" method="GET" id="back">
+        <form class="wrapper hero" action="{{ route('manage.index') }}" method="GET" id="back">
             <input class="btn" type="submit" value="BACK">
             {{ csrf_field() }}
         </form>

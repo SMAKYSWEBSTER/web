@@ -5,22 +5,21 @@
 
     @if(Auth::check() == true)
         <form action="{{ route('announcement.deleted') }}" method="POST" id="viewdeleted">
-            <input type="submit" value="View Deleted">
+            <input class="btn" type="submit" value="View Deleted">
             {{ csrf_field() }}
-        </form> 
-
-        <br>
+        </form>
 
         {!! Form::open(['url'=>route('announcement.store'), 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
             <input type="hidden" name="username" value="{{ Auth::user()->username }}"> 
             @foreach($users as $user)
-              <input type="hidden" name="propic" value="{{ $user->propic }}">
+            <input type="hidden" name="propic" value="{{ $user->propic }}">
             @endforeach
             {!! Form::cTextarea('description') !!}
             {!! Form::cInput('link') !!}
-            Upload file: <input type="file" name="file">
-            <input type="submit" value="Upload"> {{ csrf_field() }}
-            <span id="btn"></span>
+            <input type="file" name="file">
+            <button type="button" class="btn img" tabindex="-1">select an image</button>
+            <input class="btn" type="submit" value="Upload">
+            {{ csrf_field() }}
         {!! Form::close() !!}
     @endif
 
