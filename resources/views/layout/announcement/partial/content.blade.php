@@ -8,7 +8,7 @@
     <a href="{{ asset("/file/".$type->files) }}" download >{{ $type->files }}</a>
     <a href="{{ $type->link }}">{{ $type->link }}</a>
 </div>
-@if(!empty($video_id))
+@if($type->video_id)
 <div class="youtube-player">
     <iframe src="https://www.youtube.com/embed/{{ $type->video_id }}"></iframe>
 </div>
