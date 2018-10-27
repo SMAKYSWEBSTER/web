@@ -17,7 +17,7 @@
             {!! Form::cTextarea('description') !!}
             {!! Form::cInput('link') !!}
             <input type="file" name="file">
-            <button type="button" class="btn img" tabindex="-1">select an image</button>
+            {{-- <button type="button" class="btn img" tabindex="-1">select an image</button> --}}
             <input class="btn" type="submit" value="Upload">
             {{ csrf_field() }}
         {!! Form::close() !!}
