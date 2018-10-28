@@ -9,7 +9,7 @@
 
 	<div class="wrapper banner">
 		@foreach($deleteds as $deleted)
-			<div class="announcement-wrapper">
+			<div class="wrapper announcement">
 				@include('layout.announcement.partial.content',['type'=>$deleted])
 		        <div class="action-bar">
                     <form action="{{ route('announcement.restore', $deleted->id) }}" method="POST" class='delete'>
