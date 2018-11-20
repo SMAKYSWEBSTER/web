@@ -7,7 +7,7 @@
     <input type="checkbox" class="toggle" id="toggle">
     <nav>
         <ul>
-        <li><a href="{{ route('layout.home') }}">Home</a></li>
+        <li><a href="{{ route('home') }}">Home</a></li>
             <li>
                 <a href="#">About</a>
                 <ul>
