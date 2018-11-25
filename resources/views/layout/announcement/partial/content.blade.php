@@ -9,14 +9,16 @@
     <a href="{{ $type->link }}">{{ $type->link }}</a>
 </div>
 @if($type->video_id)
-<div class="youtube-player">
-  	<iframe src="https://www.youtube.com/embed/{{ $type->video_id }}"></iframe>
+<div class="video-player">
+    <iframe src="https://www.youtube.com/embed/{{ $type->video_id }}"></iframe>
 </div>
 @endif
 @if(str_contains($type->files, '.mp4') || str_contains($type->files, '.ogg'))
+<div class="video-player">
     <video width="400" controls>
-	  	<source src="{{ asset('video/'.$type->files) }}" type="video/mp4">
-	  	<source src="{{ asset('video/'.$type->files) }}" type="video/ogg">
-	</video>	
+        <source src="{{ asset('video/'.$type->files) }}" type="video/mp4">
+        <source src="{{ asset('video/'.$type->files) }}" type="video/ogg">
+    </video>
+</div>
 @endif
-	
+

@@ -5162,7 +5162,7 @@ a.btn {
   display: none;
 }
 
-.youtube-player {
+.video-player {
   position: relative;
   height: 0;
   padding-top: 28.125%;
@@ -5170,7 +5170,15 @@ a.btn {
   margin: 1em auto;
 }
 
-.youtube-player iframe {
+.video-player video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-player iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -6082,7 +6090,7 @@ footer > .copyright {
             box-sizing: border-box;
   }
 
-  .youtube-player {
+  .video-player {
     padding-top: 56.25%;
     width: 100%;
   }
