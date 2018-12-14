@@ -742,6 +742,15 @@ footer {
 			}
 		}
 
+		& > .announcement-img {
+			margin: 0 auto;
+			width: 50%;
+
+			& > img {
+				width: 100%;
+			}
+		}
+
 		& > .action-bar {
 			justify-content: flex-end;
 			text-align: right;

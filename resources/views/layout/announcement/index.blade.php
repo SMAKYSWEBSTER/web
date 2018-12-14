@@ -58,4 +58,8 @@
         @endforeach
     @endif
 </div>
+<div class="modal image">
+    <img src="" alt="No photo">
+    <span><i class="fas fa-times"></i></span>
+</div>
 @endsection

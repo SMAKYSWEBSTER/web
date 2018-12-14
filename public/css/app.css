@@ -5681,6 +5681,15 @@ footer > .copyright {
   text-align: right;
 }
 
+.wrapper.announcement > .announcement-img {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.wrapper.announcement > .announcement-img > img {
+  width: 100%;
+}
+
 .wrapper.announcement > .action-bar {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
