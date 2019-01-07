@@ -5681,12 +5681,12 @@ footer > .copyright {
   text-align: right;
 }
 
-.wrapper.announcement > .announcement-img {
+.wrapper.announcement > .announcement-gallery {
   margin: 0 auto;
   width: 50%;
 }
 
-.wrapper.announcement > .announcement-img > img {
+.wrapper.announcement > .announcement-gallery > img {
   width: 100%;
 }
 
@@ -6148,6 +6148,10 @@ footer > .copyright {
     position: absolute;
     bottom: 0;
     right: 0;
+  }
+
+  .wrapper.announcement > .announcement-gallery {
+    width: 100%;
   }
 
   .wrapper.banner > img {

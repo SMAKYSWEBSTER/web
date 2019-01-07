@@ -742,7 +742,7 @@ footer {
 			}
 		}
 
-		& > .announcement-img {
+		& > .announcement-gallery {
 			margin: 0 auto;
 			width: 50%;
 
@@ -1165,6 +1165,10 @@ footer {
 				position: absolute;
 				bottom: 0;
 				right: 0;
+			}
+
+			& > .announcement-gallery {
+				width: 100%;
 			}
 		}
 
