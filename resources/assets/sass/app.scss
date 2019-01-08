@@ -746,8 +746,11 @@ footer {
 			margin: 0 auto;
 			width: 50%;
 
-			& > img {
-				width: 100%;
+			& > .announcement-img {
+				& > img {
+					@extend %no-overflow;
+					width: 100%;
+				}
 			}
 		}
 

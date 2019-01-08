@@ -23,8 +23,14 @@
 @endif
 @if(str_contains($type->files, '.jpg') || str_contains($type->files, '.jpeg') || str_contains($type->files, '.gif')  || str_contains($type->files, '.png'))
 <div class="announcement-gallery">
-    <img src="file/{{ $type->files }}" alt="No Photo">
-    <img src="file/{{ $type->files }}" alt="No Photo">
-    <img src="file/{{ $type->files }}" alt="No Photo">
+    <div class="announcement-img">
+        <img src="file/{{ $type->files }}" alt="No Photo">
+    </div>
+    <div class="announcement-img">
+        <img src="file/{{ $type->files }}" alt="No Photo">
+    </div>
+    <div class="announcement-img">
+        <img src="file/{{ $type->files }}" alt="No Photo">
+    </div>
 </div>
 @endif
