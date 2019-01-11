@@ -26,11 +26,5 @@
     <div class="announcement-img">
         <img src="file/{{ $type->files }}" alt="No Photo">
     </div>
-    <div class="announcement-img">
-        <img src="file/{{ $type->files }}" alt="No Photo">
-    </div>
-    <div class="announcement-img">
-        <img src="file/{{ $type->files }}" alt="No Photo">
-    </div>
 </div>
 @endif

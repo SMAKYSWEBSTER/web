@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Announcement;
+use App\File;
 use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\DB;
 use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class AnnouncementController extends Controller
 {
@@ -19,16 +20,19 @@ class AnnouncementController extends Controller
         }
         $announcement->description = $request->Input('description');
         $announcement->link = $request->Input('link');
+
 		$file = Input::file('file');
         if(Input::hasFile('file')) {
-            $filename = $file->getClientOriginalName();
-            if(str_contains($file->getMimeType(), 'video')) {
-                $location = public_path("video/");
-            } else {
-                $location = public_path("file/");
-            }
-            $file->move($location, $filename);
-            $announcement->files = $filename;
+            // foreach ($files as $file) {
+                $filename = $file->getClientOriginalName();
+                if(str_contains($file->getMimeType(), 'video')) {
+                    $location = public_path("video/");
+                } else {
+                    $location = public_path("file/");
+                }
+                $file->move($location, $filename);
+                $announcement->files = $filename;
+            // }
 		} 
 		$announcement->save();
     }
@@ -50,6 +54,7 @@ class AnnouncementController extends Controller
         $session = $this->session();
 		$users = User::where(['username'=>$session])->get();
 		$selfs = Announcement::where(['username'=>$session])->latest()->get();
+        // dd($selfs);
 		$generals = Announcement::latest()->get();
 
 		return view('layout.announcement.index', ['users'=>$users, 'generals'=>$generals, 'selfs'=>$selfs]);
@@ -73,6 +78,7 @@ class AnnouncementController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $this->validate($request, [
 			'description'=>'required|max:5000'
 		]);
@@ -119,7 +125,6 @@ class AnnouncementController extends Controller
         $this->validate($request, [
 			'description'=>'required|max:5000'
 		]);
-
 		$this->uploadHandle($request,$announcement);
 
 		return redirect('/announcement');

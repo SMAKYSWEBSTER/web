@@ -12,7 +12,7 @@
         {!! Form::open(['url'=>route('announcement.store'), 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
             <input type="hidden" name="username" value="{{ Auth::user()->username }}"> 
             @foreach($users as $user)
-            <input type="hidden" name="propic" value="{{ $user->propic }}">
+                <input type="hidden" name="propic" value="{{ $user->propic }}">
             @endforeach
             {!! Form::cTextarea('description') !!}
             {!! Form::cInput('link') !!}

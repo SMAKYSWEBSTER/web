@@ -38,6 +38,7 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $photos = $request->file('photos');
 		if(Input::hasFile('photos')) {
 			foreach($photos as $photo) {
