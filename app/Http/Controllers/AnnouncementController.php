@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AnnFile;
 use App\Announcement;
 use App\File;
 use App\User;
@@ -9,6 +10,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Route;
 
 class AnnouncementController extends Controller
 {
@@ -20,21 +22,26 @@ class AnnouncementController extends Controller
         }
         $announcement->description = $request->Input('description');
         $announcement->link = $request->Input('link');
+        $announcement->save();
+    }
 
-		$file = Input::file('file');
-        if(Input::hasFile('file')) {
-            // foreach ($files as $file) {
-                $filename = $file->getClientOriginalName();
-                if(str_contains($file->getMimeType(), 'video')) {
-                    $location = public_path("video/");
-                } else {
-                    $location = public_path("file/");
-                }
-                $file->move($location, $filename);
-                $announcement->files = $filename;
-            // }
-		} 
-		$announcement->save();
+    private function fileUpload($request, $file, $annFile = null)
+    {
+        if (Route::getCurrentRoute()->getName() == 'announcement.store') {
+            $annFile = new AnnFile;
+        } 
+        $filename = $file->getClientOriginalName();
+        if(str_contains($file->getMimeType(), 'video')) {
+            $location = public_path("video/");
+        } else {
+            $location = public_path("file/");
+        }
+        $file->move($location, $filename);
+        $annFile->file = $filename;
+        if (Route::getCurrentRoute()->getName() == 'announcement.store') {
+            $annFile->announcement_id = $request->input('ann_id');
+        } 
+        $annFile->save();
     }
 
     private function session()
@@ -52,12 +59,16 @@ class AnnouncementController extends Controller
     public function index()
     {
         $session = $this->session();
-		$users = User::where(['username'=>$session])->get();
-		$selfs = Announcement::where(['username'=>$session])->latest()->get();
-        // dd($selfs);
-		$generals = Announcement::latest()->get();
+        $users = User::where(['username'=>$session])->get();
+        $selfs = Announcement::where(['username'=>$session])->latest()->get();
+        $generals = Announcement::latest()->get();
+        if (Announcement::withTrashed()->latest()->first() == true) {
+            $ann_id = Announcement::withTrashed()->latest()->first()->id + 1;
+        } else {
+            $ann_id = null;
+        }
 
-		return view('layout.announcement.index', ['users'=>$users, 'generals'=>$generals, 'selfs'=>$selfs]);
+		return view('layout.announcement.index', ['users'=>$users, 'generals'=>$generals, 'selfs'=>$selfs, 'ann_id'=>$ann_id]);
     }
 
     /**
@@ -78,14 +89,22 @@ class AnnouncementController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        // dd(Route::getCurrentRoute()->getName());
         $this->validate($request, [
 			'description'=>'required|max:5000'
 		]);
 		$announcement = new Announcement;
 		$announcement->username = $request->Input('username');
 		$announcement->propic = $request->Input('propic');
+
 		$this->uploadHandle($request,$announcement);
+
+        $files = $request->file('file');
+        if(Input::hasFile('file')) {
+            foreach ($files as $file) {
+                $this->fileUpload($request, $file);
+            }
+        }
 
 		return redirect()->route('announcement.index');
     }
@@ -98,7 +117,6 @@ class AnnouncementController extends Controller
      */
     public function show(Announcement $announcement)
     {
-        // dd($announcement->propic);
         return view('layout.announcement.show', ['announcement'=>$announcement]);
     }
 
@@ -130,6 +148,16 @@ class AnnouncementController extends Controller
 		return redirect('/announcement');
     }
 
+    public function updatefile(Request $request, AnnFile $annFile)
+    {
+        // dd($annFile->announcement);
+        if(Input::hasFile('file')) {
+            $file = $request->file('file');
+            $this->fileUpload($request, $file, $annFile);
+        }
+        return redirect('/announcement');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -147,6 +175,8 @@ class AnnouncementController extends Controller
     {
         $session = $this->session();
 		$deleteds = DB::table('announcements')->where('username',$session)->whereNotNull('deleted_at')->get();
+        // $files = AnnFile::where('announcement_id',$deleteds[20]->id)->get();
+        // dd(AnnFile::where('announcement_id',$deleteds[20]->id)->get());
 
 		return view('layout.announcement.deleted', ['deleteds'=>$deleteds]);
     }

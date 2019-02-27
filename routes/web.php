@@ -18,6 +18,7 @@ Route::resource('activity', 'ActivityController');
 Route::resource('album', 'AlbumController');
 
 Route::resource('announcement', 'AnnouncementController');
+    Route::patch('/announcement/updatefile/{annFile}', 'AnnouncementController@updatefile')->name('announcement.updatefile');
     Route::post('/announcement/deleted', 'AnnouncementController@deleted')->name('announcement.deleted');
     Route::get('/announcement/deleted/get', 'AnnouncementController@deleted')->name('announcement.deleted.get');
     Route::post('/announcement/{announcement}/restore', 'AnnouncementController@restore')->name('announcement.restore');

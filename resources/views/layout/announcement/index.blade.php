@@ -11,12 +11,13 @@
 
         {!! Form::open(['url'=>route('announcement.store'), 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
             <input type="hidden" name="username" value="{{ Auth::user()->username }}"> 
+            <input type="hidden" name="ann_id" value="{{ $ann_id }}"> 
             @foreach($users as $user)
                 <input type="hidden" name="propic" value="{{ $user->propic }}">
             @endforeach
             {!! Form::cTextarea('description') !!}
             {!! Form::cInput('link') !!}
-            <input type="file" name="file">
+            <input type="file" name="file[]" multiple>
             {{-- <button type="button" class="btn img" tabindex="-1">select an image</button> --}}
             <input class="btn" type="submit" value="Upload">
             {{ csrf_field() }}
