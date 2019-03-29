@@ -100,6 +100,14 @@ select {
 	}
 }
 
+.bottom-bar {
+	align-content: center;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	width: 100%;
+}
+
 // Button Styles
 
 .btn {
@@ -119,6 +127,34 @@ select {
 		color: #fff;
 		background-color: #FF1744;
 	}
+
+	&.fixed {
+		width: 50%;
+		text-align: center;
+		margin: .5em auto;
+	}
+
+	&.inverted {
+		background-color: #FF1744;
+		color: #fff;
+
+		&:hover {
+			color: #ff1744;
+			background-color: transparent;
+		}
+	}
+
+	&.rounded {
+		border-radius: 10px;
+	}
+
+	&.--color-primary {
+		background-color: #0077FF;
+
+		&:hover {
+			color: #0077FF;
+		}
+	}
 }
 
 a.btn {
@@ -135,6 +171,7 @@ a.btn {
 	max-width: 500px;
 
 	& > input {
+		background: transparent;
 		-webkit-appearance: none;
 		border: 0;
 		padding: 0;
@@ -142,9 +179,6 @@ a.btn {
 		border-bottom: 2px solid #C8CCD4;
 		transition: all .15s ease;
 
-		&:hover {
-			background-color: rgba(#223254,.03);
-		}
 		&:not(:placeholder-shown) {
 			& + span {
 					transform: translateY(-1rem) scale(.75);
@@ -163,6 +197,7 @@ a.btn {
 	}
 
 	& > select {
+		background: transparent;
 		-webkit-appearance: none;
 		border: 0;
 		padding: 0;
@@ -170,6 +205,10 @@ a.btn {
 		border-bottom: 2px solid #C8CCD4;
 		transition: all .15s ease;
 		font-size: 1em;
+
+		&:hover {
+			color: #0077FF;
+		}
 
 		&:focus {
 			outline: none;
@@ -184,6 +223,7 @@ a.btn {
 	}
 
 	& > textarea {
+		background: transparent;
 		overflow: hidden;
 		box-sizing: border-box;
 		resize: none;
@@ -193,6 +233,11 @@ a.btn {
 		border-bottom: 2px solid #C8CCD4;
 		transition: all .15s ease;
 
+		&:not(:placeholder-shown) {
+			& + span {
+					transform: translateY(-1rem) scale(.75);
+				}
+			}
 		&:focus {
 			outline: none;
 			& + span {
@@ -203,17 +248,13 @@ a.btn {
 				}
 			}
 		}
-
-		& + span + .border {
-			bottom: 2px;
-		}
 	}
 
 	& > .label {
 		font-size: 1rem;
 		position: absolute;
 		top: 0;
-		color: #9098A9;
+		color: #000;
 		transform-origin: left;
 		transition: all .2s ease;
 	}
@@ -229,6 +270,20 @@ a.btn {
 		transform-origin: left;
 		transition: all .15s ease;
 	}
+
+	& > textarea ~ .border {
+		bottom: 2.75px;
+	}
+
+	&:hover {
+		& > .label {
+			color: #0077FF;
+		}
+		& > .border {
+			background-color: #0077FF;
+			transform: scaleX(1);
+		}
+	}
 }
 
 
@@ -239,6 +294,14 @@ a.btn {
 
 #logoutForm {
 	display: none;
+}
+
+.bottom-bar {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	margin: 0 auto;
+	width: 30%;
 }
 
 .action-bar {
@@ -276,6 +339,10 @@ text-align: center;
 	display: none;
 }
 
+.file-upload-hidden {
+	display: none;
+}
+
 .hidden {
 	display: none;
 }
@@ -304,6 +371,21 @@ text-align: center;
 	}
 }
 
+.profile-img {
+	@extend %no-overflow;
+	max-height: 12rem;
+	max-width: 12rem;
+	height: 12rem;
+	width: 12rem;
+	display: block;
+	margin: 1em auto;
+}
+
+.profile-name {
+	text-transform: capitalize;
+	text-align: center;
+}
+
 // Alert
 
 .alert {
@@ -315,6 +397,7 @@ text-align: center;
 	border-radius: .5rem;
 	background-color: #000;
 	color: #fff;
+	text-transform: capitalize;
 
 	&.info {
 		color: #31708F;
@@ -532,6 +615,7 @@ footer {
 			box-sizing: border-box;
 			height: 32em;
 			width: 25em;
+			background-image: linear-gradient(0deg, #fff, #eee);
 			box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3),
 						0 16px 16px 0 rgba(0, 0, 0, .15);
 
@@ -584,8 +668,12 @@ footer {
 			}
 
 			& > .content {
-				margin: 1.5em .5em;
+				margin: 1.5em;
 				font-size: 1.2em;
+
+				& > h1, > h2, > h3, > h4, > h5, > h6 {
+					margin: 1em 0;
+				}
 
 				& i.fas , & i.fab {
 					display: block;

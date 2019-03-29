@@ -5,17 +5,20 @@
         <h1>Activities</h1>
     </div>
 
-    @if(Auth::check() == true) 
+    @if(Auth::check() == true)
         @if(Auth::user()->username == 'osis')
             <div class="wrapper card">
-                <div class="content">
-                    {!! Form::open(['url'=>route('activity.store'), 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+                {!! Form::open(['url'=>route('activity.store'), 'class'=>'card-body', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+                    <div class="content">
                         {!! Form::cInput('albumname') !!}
-                        Upload Album Cover: <input type="file" name="album">
-                        <input type="submit" value="Upload">
-                        {{ csrf_field() }}
-                    {!! Form::close() !!}
-                </div>
+                        <input type="file" name="album" accept='image/*'>
+                    </div>
+                    <div class="action-bar">
+                        <button type="button" class="btn img" tabindex="-1">select an album cover</button>
+                        <input class="btn" type="submit" value="Upload">
+                    </div>
+                    {{ csrf_field() }}
+                {!! Form::close() !!}
             </div>
         @endif
     @endif
@@ -29,19 +32,23 @@
             </div>
             @if(Auth::check() == true)
                 @if(Auth::user()->username == 'osis')
-                    <div style="text-align: center;">
-                        {!! Form::open(['url'=>route('activity.destroy', $albumcover->id), 'method'=>'DELETE', 'enctype'=>'multipart/form-data']) !!}
-                            <input type="submit" value="Delete">
-                            {{ csrf_field() }}
-                        {!! Form::close() !!}
-                        
-                        {!! Form::open(['url'=>route('activity.update', $albumcover->id), 'method'=>'PATCH', 'enctype'=>'multipart/form-data']) !!}
-                                <input type="text" name="albumname" placeholder="Edit Description" value="{{ $albumcover->albumname }}">
-                                Edit Album Cover: <input type="file" name="album" value="{{ $albumcover->cover }}">
-                                <input type="submit" value="Edit">
-                            {{ csrf_field() }}
-                        {!! Form::close() !!}
-                    </div>
+                    {!! Form::open(['url'=>route('activity.destroy', $albumcover->id), 'class'=>'action-bar', 'method'=>'DELETE', 'enctype'=>'multipart/form-data'])!!}
+                        <input class="btn" type="submit" value="Delete">
+                        {{ csrf_field() }}
+                    {!! Form::close() !!}
+                    {!! Form::open(['url'=>route('activity.update', $albumcover->id), 'method'=>'PATCH', 'enctype'=>'multipart/form-data']) !!}
+                        <div class="bottom-bar">
+                            {!! Form::cInput('albumname') !!}
+                            {{-- <input type="text" name="albumname" placeholder="Edit Description" value="{{ $albumcover->albumname }}"> --}}
+                            {!! Form::cInput('cover') !!}
+                            <input type="file" name="album" value="{{ $albumcover->cover }}" accept="image/*" tabindex="-1">
+                        </div>
+                        <div class="action-bar">
+                            <button type="button" class="btn img">edit album cover</button>
+                            <input class="btn" type="submit" value="Edit">
+                        </div>
+                        {{ csrf_field() }}
+                    {!! Form::close() !!}
                 @endif
             @endif
         @endforeach

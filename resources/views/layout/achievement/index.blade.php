@@ -3,18 +3,27 @@
 @section('content')
 <div class="wrapper banner">
   <h1>Achievements</h1>
-  @if(Auth::check() == true && Auth::user()->username == 'osis')
-  {!! Form::open(['url'=>route('achievement.store'), 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
-    {!! Form::cInput('title') !!}
-    {!! Form::cInput('name') !!}
-    {!! Form::cInput('rank') !!}
-    {!! Form::cInput('date') !!}
-    <input type="file" name="photo">
-    <input type="submit" value="Upload">
-    {{ csrf_field() }}
-  {!! Form::close() !!}
-  @endif
 </div>
+
+@if(Auth::check() == true && Auth::user()->username == 'osis')
+  <div class="wrapper card">
+    {!! Form::open(['url'=>route('achievement.store'),'class'=>'card-body', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+      <div class="content">
+        <h1>Upload Achievements</h1>
+        {!! Form::cInput('title') !!}
+        {!! Form::cInput('name') !!}
+        {!! Form::cInput('rank') !!}
+        {!! Form::cInput('date') !!}
+        <input type="file" name="photo" accept="image/*" tabindex="-1">
+      </div>
+      <div class="action-bar">
+        <button type="button" class="btn img">select an image</button>
+        <input class="btn" type="submit" value="Upload">
+      </div>
+      {{ csrf_field() }}
+    {!! Form::close() !!}
+  </div>
+@endif
 
 <div class="wrapper card">
   @foreach($achievements as $achievement)
