@@ -41,6 +41,11 @@ Route::view('/', 'layout.home')->name('layout.home');
 Route::view('/extracurricular', 'layout.extracurricular')->name('layout.extracurricular');
 Route::view('/history', 'layout.history')->name('layout.history');
 Route::view('/edufair', 'layout.edufair')->name('layout.edufair');
-Route::view('/promnight', 'layout.promnight')->name('layout.promnight');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/promnight', 'PromnightController@index')->name('promnight.index');
+    Route::post('/promnight/store', 'PromnightController@store')->name('promnight.store');
+    Route::post('/promnight/vote/male', 'PromnightController@votemale')->name('promnight.votemale');
+    Route::post('/promnight/vote/female', 'PromnightController@votefemale')->name('promnight.votefemale');
+    Route::get('/promnight/admin', 'PromnightController@admin')->name('promnight.admin');
+
+// Route::get('/home', 'HomeController@index')->name('home');

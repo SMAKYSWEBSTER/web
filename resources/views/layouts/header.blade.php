@@ -7,7 +7,7 @@
     <input type="checkbox" class="toggle" id="toggle">
     <nav>
         <ul>
-        <li><a href="{{ route('home') }}">Home</a></li>
+        <li><a href="/">Home</a></li>
             <li>
                 <a href="#">About</a>
                 <ul>
@@ -27,7 +27,7 @@
                 @if(Auth::user()->username == 'tatausaha')
                     <li><a href="{{ route('manage.index') }}">Manage</a></li>
                 @else
-                    <li><a href="{{ route('layout.promnight')}}">Prom Night 2019</a></li>
+                    <li><a href="{{ route('promnight.index')}}">Prom Night 2019</a></li>
                 @endif
                 <li>
                     <a id="logoutButton">Log Out</a>
