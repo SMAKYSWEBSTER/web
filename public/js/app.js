@@ -82,9 +82,9 @@ module.exports = __webpack_require__(2);
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-// require('./bootstrap');
+// require('./bootstrap')
 
-// window.Vue = require('vue');
+// window.Vue = require('vue')
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -92,11 +92,11 @@ module.exports = __webpack_require__(2);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'))
 
 // const app = new Vue({
 //     el: '#app'
-// });
+// })
 
 //  Code
 $(document).ready(function () {
@@ -154,32 +154,41 @@ $(document).ready(function () {
 
   //Custom Image Upload
 
-  $file = $('input[type=file][accept="image/*"]').addClass('image-upload-hidden');
+  $image = $('input[type=file][accept="image/*"]').addClass('image-upload-hidden');
   $('.btn.img').on('click', function () {
+    $image.trigger('focus').trigger('click');
+    // $image.change(function() {
+    //   let filename = $file.val().split('\\').pop()
+    //   $('.image-upload-input').val(filename).attr('title', filename).trigger('focus')
+    // })
+  });
+
+  $file = $('input[type=file]').addClass('file-upload-hidden');
+  $('.btn.file').on('click', function () {
     $file.trigger('focus').trigger('click');
     $file.change(function () {
       var filename = $file.val().split('\\').pop();
-      $('.image-upload-input').val(filename).attr('title', filename).trigger('focus');
+      $('.file-upload-input').val(filename).attr('title', filename).trigger('focus');
     });
   });
 
   //Textarea autoexpand
   // $('textarea').one('focus', function() {
-  //   let savedValue = this.value;
-  //   this.value = '';
-  //   this.baseScrollHeight = this.scrollHeight;
-  //   this.value = savedValue;
+  //   let savedValue = this.value
+  //   this.value = ''
+  //   this.baseScrollHeight = this.scrollHeight
+  //   this.value = savedValue
   // }).on('input', function() {
-  //   this.rows = 3;
-  //   rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16);
-  //   this.rows = rows + 3;
-  // });
+  //   this.rows = 3
+  //   rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 16)
+  //   this.rows = rows + 3
+  // })
 
   //Image Upload Preview
   // $('input.get-preview').on('change', function() {
-  //   $value = $(this).val();
-  //   $('.img-preview > img').attr('src', $value);
-  // });
+  //   $value = $(this).val()
+  //   $('.img-preview > img').attr('src', $value)
+  // })
 });
 
 /***/ }),

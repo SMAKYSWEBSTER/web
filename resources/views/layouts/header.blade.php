@@ -22,10 +22,12 @@
                 </ul>
             </li>
             <li><a href="{{ route('announcement.index') }}">Announcement</a></li>
-            <li><a href="{{ route('layout.edufair') }}">Edufair 2018</a></li>
+            {{-- <li><a href="{{ route('layout.edufair') }}">Edufair 2018</a></li> --}}
             @if(Auth::check() == true)
                 @if(Auth::user()->username == 'tatausaha')
                     <li><a href="{{ route('manage.index') }}">Manage</a></li>
+                @else
+                    <li><a href="{{ route('layout.promnight')}}">Prom Night 2019</a></li>
                 @endif
                 <li>
                     <a id="logoutButton">Log Out</a>

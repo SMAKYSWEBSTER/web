@@ -41,5 +41,6 @@ Route::view('/', 'layout.home')->name('layout.home');
 Route::view('/extracurricular', 'layout.extracurricular')->name('layout.extracurricular');
 Route::view('/history', 'layout.history')->name('layout.history');
 Route::view('/edufair', 'layout.edufair')->name('layout.edufair');
+Route::view('/promnight', 'layout.promnight')->name('layout.promnight');
 
 Route::get('/home', 'HomeController@index')->name('home');

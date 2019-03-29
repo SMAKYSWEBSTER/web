@@ -1,5 +1,5 @@
 <div class="profile-info">
-    <img src="{{ asset('/propic/'.$type->propic) }}" width="100px" height="100px" id="announcement_img">
+    <img src="{{ asset('/propic/'.$type->propic) }}" id="announcement_img">
     <p class="publisher"> Publisher: {{ $type->username }} </p>
     <p class="date_created"> {{ $type->created_at }} </p>
 </div>

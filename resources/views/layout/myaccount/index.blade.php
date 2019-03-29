@@ -13,11 +13,13 @@
 			]) !!}
 			<div class="content">
 				<h1>My Account</h1>
-				<input class="get-preview" type="file" name="propic" accept="image/*">
+				<img class="profile-img" src="{{ asset('/propic/'.Auth::user()->propic) }}" width="100" height="100">
+				<h3 class="profile-name" >{{ Auth::user()->username }}</h3>
+				<input class="get-preview" type="file" name="propic" accept="image/*" tabindex="-1">
 			</div>
 			<div class="action-bar">
 				<input class="btn" type="submit" value="Upload">
-				<button type="button" class="btn img" tabindex="-1">select an image</button>
+				<button type="button" class="btn img">select an image</button>
 			</div>
 				{{ csrf_field() }}
 			{!! Form::close() !!}

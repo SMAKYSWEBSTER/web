@@ -13,5 +13,5 @@
       <li><a href="http://line.me/ti/p/%40uyd3058f"><i class="fab fa-line"></i></a></li>
     </ul>
   </div>
-  <p class="copyright">Developed By © 2017 SMAKYS Programmers Clan - SMAK Yos Sudarso Batam</p>
+  <p class="copyright">Developed By © 2017-2019 SMAKYS Programmers Clan - SMAK Yos Sudarso Batam</p>
 </footer>

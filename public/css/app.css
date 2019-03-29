@@ -4956,6 +4956,22 @@ select {
   overflow: initial;
 }
 
+.bottom-bar {
+  -ms-flex-line-pack: center;
+      align-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
 .btn {
   text-transform: uppercase;
   color: #FF1744;
@@ -4975,6 +4991,34 @@ select {
   background-color: #FF1744;
 }
 
+.btn.fixed {
+  width: 50%;
+  text-align: center;
+  margin: .5em auto;
+}
+
+.btn.inverted {
+  background-color: #FF1744;
+  color: #fff;
+}
+
+.btn.inverted:hover {
+  color: #ff1744;
+  background-color: transparent;
+}
+
+.btn.rounded {
+  border-radius: 10px;
+}
+
+.btn.\--color-primary {
+  background-color: #0077FF;
+}
+
+.btn.\--color-primary:hover {
+  color: #0077FF;
+}
+
 a.btn {
   text-decoration: none;
 }
@@ -4988,6 +5032,7 @@ a.btn {
 }
 
 .inp > input {
+  background: transparent;
   -webkit-appearance: none;
   border: 0;
   padding: 0;
@@ -4995,10 +5040,6 @@ a.btn {
   border-bottom: 2px solid #C8CCD4;
   -webkit-transition: all .15s ease;
   transition: all .15s ease;
-}
-
-.inp > input:hover {
-  background-color: rgba(34, 50, 84, 0.03);
 }
 
 .inp > input:not(:placeholder-shown) + span {
@@ -5022,6 +5063,7 @@ a.btn {
 }
 
 .inp > select {
+  background: transparent;
   -webkit-appearance: none;
   border: 0;
   padding: 0;
@@ -5030,6 +5072,10 @@ a.btn {
   -webkit-transition: all .15s ease;
   transition: all .15s ease;
   font-size: 1em;
+}
+
+.inp > select:hover {
+  color: #0077FF;
 }
 
 .inp > select:focus {
@@ -5048,6 +5094,7 @@ a.btn {
 }
 
 .inp > textarea {
+  background: transparent;
   overflow: hidden;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -5058,6 +5105,11 @@ a.btn {
   border-bottom: 2px solid #C8CCD4;
   -webkit-transition: all .15s ease;
   transition: all .15s ease;
+}
+
+.inp > textarea:not(:placeholder-shown) + span {
+  -webkit-transform: translateY(-1rem) scale(0.75);
+          transform: translateY(-1rem) scale(0.75);
 }
 
 .inp > textarea:focus {
@@ -5075,15 +5127,11 @@ a.btn {
           transform: scaleX(1);
 }
 
-.inp > textarea + span + .border {
-  bottom: 2px;
-}
-
 .inp > .label {
   font-size: 1rem;
   position: absolute;
   top: 0;
-  color: #9098A9;
+  color: #000;
   -webkit-transform-origin: left;
           transform-origin: left;
   -webkit-transition: all .2s ease;
@@ -5105,12 +5153,41 @@ a.btn {
   transition: all .15s ease;
 }
 
+.inp > textarea ~ .border {
+  bottom: 2.75px;
+}
+
+.inp:hover > .label {
+  color: #0077FF;
+}
+
+.inp:hover > .border {
+  background-color: #0077FF;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
 #logoutButton {
   cursor: pointer;
 }
 
 #logoutForm {
   display: none;
+}
+
+.bottom-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+  width: 30%;
 }
 
 .action-bar {
@@ -5146,6 +5223,7 @@ a.btn {
   -o-border-radius: 10px;
 }
 
+.profile-img,
 .wrapper.announcement > .profile-info > img,
 .wrapper.announcement > .announcement-gallery > .announcement-img > img,
 .wrapper.image-slider > img {
@@ -5156,6 +5234,10 @@ a.btn {
 }
 
 .image-upload-hidden {
+  display: none;
+}
+
+.file-upload-hidden {
   display: none;
 }
 
@@ -5187,6 +5269,20 @@ a.btn {
   height: 100%;
 }
 
+.profile-img {
+  max-height: 12rem;
+  max-width: 12rem;
+  height: 12rem;
+  width: 12rem;
+  display: block;
+  margin: 1em auto;
+}
+
+.profile-name {
+  text-transform: capitalize;
+  text-align: center;
+}
+
 .alert {
   display: inline-block;
   text-align: center;
@@ -5196,6 +5292,7 @@ a.btn {
   border-radius: .5rem;
   background-color: #000;
   color: #fff;
+  text-transform: capitalize;
 }
 
 .alert.info {
@@ -5458,6 +5555,8 @@ footer > .copyright {
           box-sizing: border-box;
   height: 32em;
   width: 25em;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#fff), to(#eee));
+  background-image: linear-gradient(0deg, #fff, #eee);
   -webkit-box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 16px 16px 0 rgba(0, 0, 0, 0.15);
           box-shadow: 0 27px 55px 0 rgba(0, 0, 0, 0.3), 0 16px 16px 0 rgba(0, 0, 0, 0.15);
 }
@@ -5510,8 +5609,17 @@ footer > .copyright {
 }
 
 .wrapper.card > .card-body > .content {
-  margin: 1.5em .5em;
+  margin: 1.5em;
   font-size: 1.2em;
+}
+
+.wrapper.card > .card-body > .content > h1,
+.wrapper.card > .card-body > .content > h2,
+.wrapper.card > .card-body > .content > h3,
+.wrapper.card > .card-body > .content > h4,
+.wrapper.card > .card-body > .content > h5,
+.wrapper.card > .card-body > .content > h6 {
+  margin: 1em 0;
 }
 
 .wrapper.card > .card-body > .content i.fas,
