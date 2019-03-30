@@ -296,6 +296,12 @@ a.btn {
 	display: none;
 }
 
+.flex-centered {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+}
+
 .bottom-bar {
 	display: flex;
 	flex-flow: column;

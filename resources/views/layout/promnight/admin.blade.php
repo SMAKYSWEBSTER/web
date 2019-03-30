@@ -9,10 +9,14 @@
                     <div class="content">
                         {!! Form::cInput('name') !!}
                     </div>
-                    <select name="sex">
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
+                    <label class="inp">
+                        <select name="sex">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        <span class="label"></span>
+                        <span class="border"></span>
+                    </label>
                     <div class="action-bar">
                         <input class="btn" type="submit" value="Upload">
                     </div>
@@ -23,12 +27,12 @@
             <div class="wrapper column">
                 <div class="col-3">
                     @foreach($promkings as $promking)
-                        <p>PROM KING NOMINATION : {{ $promking->name }} ({{ count($promking->votes) }})</p>
+                        <p>PROM KING NOMINATION : {{ $promking->name }}, votes: {{ count($promking->votes) }}</p>
                     @endforeach
                 </div>
                 <div class="col-3">
                     @foreach($promqueens as $promqueen)
-                        <p>PROM QUEEN NOMINATION : {{ $promqueen->name }} ({{ count($promqueen->votes) }})</p>
+                        <p>PROM QUEEN NOMINATION : {{ $promqueen->name }}, votes: {{ count($promqueen->votes) }}</p>
                     @endforeach
                 </div>
             </div>

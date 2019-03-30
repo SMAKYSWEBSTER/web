@@ -37,7 +37,7 @@ class PromnightController extends Controller
     	$vote->sex = 'male';
     	$vote->save();
 
-    	return redirect()->route('promnight.index');
+    	return redirect()->route('success');
     }
 
     public function votefemale(Request $request) {
@@ -46,7 +46,7 @@ class PromnightController extends Controller
     	$vote->sex = 'female';
     	$vote->save();
 
-    	return redirect()->route('promnight.index');
+    	return redirect()->route('success');
     }
 
     public function admin() {

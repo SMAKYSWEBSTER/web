@@ -13,7 +13,7 @@
             <div class="wrapper column">
                 <div class="col-3" style="justify-content:center;">
                     @foreach($males as $male)
-                        <form action="{{ route('promnight.votemale') }}" method="post">
+                        <form action="{{ route('promnight.votemale') }}" class="flex-centered" method="post">
                             {{-- <div class="btn fixed inverted rounded --color-primary">
                                 {{ $male->name }}
                             </div> --}}
@@ -25,7 +25,7 @@
                 </div>
                 <div class="col-3">
                     @foreach($females as $female)
-                        <form action="{{ route('promnight.votefemale') }}" method="post">
+                        <form action="{{ route('promnight.votefemale') }}" class="flex-centered" method="post">
                             {{-- <div class="btn fixed inverted rounded --color-primary">
                                 {{ $male->name }}
                             </div> --}}

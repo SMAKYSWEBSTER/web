@@ -16,6 +16,7 @@ Route::view('/login/success', 'layout.login.success');
 Route::resource('achievement', 'AchievementController');
 Route::resource('activity', 'ActivityController');
 Route::resource('album', 'AlbumController');
+Route::view('success', 'layout.success')->name('success');
 
 Route::resource('announcement', 'AnnouncementController');
     Route::patch('/announcement/updatefile/{annFile}', 'AnnouncementController@updatefile')->name('announcement.updatefile');
