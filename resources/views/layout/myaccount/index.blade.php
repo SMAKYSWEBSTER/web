@@ -8,7 +8,7 @@
 			{!! Form::model(null, [
 				'url' => route('myaccount.firstupdate', Auth::user()->id),
 				'method' => 'PATCH',
-				'class' => 'card-body',
+				'class' => 'card-body wrapped-height',
 				'enctype' => 'multipart/form-data',
 			]) !!}
 			<div class="content">

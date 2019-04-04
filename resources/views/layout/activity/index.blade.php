@@ -3,25 +3,25 @@
 @section('content')
     <div class="wrapper banner">
         <h1>Activities</h1>
-    </div>
 
-    @if(Auth::check() == true)
-        @if(Auth::user()->username == 'osis')
-            <div class="wrapper card">
-                {!! Form::open(['url'=>route('activity.store'), 'class'=>'card-body', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
-                    <div class="content">
-                        {!! Form::cInput('albumname') !!}
-                        <input type="file" name="album" accept='image/*'>
-                    </div>
-                    <div class="action-bar">
-                        <button type="button" class="btn img" tabindex="-1">select an album cover</button>
-                        <input class="btn" type="submit" value="Upload">
-                    </div>
-                    {{ csrf_field() }}
-                {!! Form::close() !!}
-            </div>
+        @if(Auth::check() == true)
+            @if(Auth::user()->username == 'osis')
+                <div class="wrapper card">
+                    {!! Form::open(['url'=>route('activity.store'), 'class'=>'card-body wrapped-height', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+                        <div class="content">
+                            {!! Form::cInput('albumname') !!}
+                            <input type="file" name="album" accept='image/*'>
+                        </div>
+                        <div class="action-bar">
+                            <button type="button" class="btn img" tabindex="-1">select an album cover</button>
+                            <input class="btn" type="submit" value="Upload">
+                        </div>
+                        {{ csrf_field() }}
+                    {!! Form::close() !!}
+                </div>
+            @endif
         @endif
-    @endif
+    </div>
 
     @foreach($albumcovers as $albumcover)
             <div class="wrapper image">
@@ -40,7 +40,6 @@
                         <div class="bottom-bar">
                             {!! Form::cInput('albumname') !!}
                             {{-- <input type="text" name="albumname" placeholder="Edit Description" value="{{ $albumcover->albumname }}"> --}}
-                            {!! Form::cInput('cover') !!}
                             <input type="file" name="album" value="{{ $albumcover->cover }}" accept="image/*" tabindex="-1">
                         </div>
                         <div class="action-bar">

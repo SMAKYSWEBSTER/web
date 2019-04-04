@@ -9,7 +9,7 @@
             <input class="btn" type="submit" value="View Deleted">
             {{ csrf_field() }}
         </form>
-        {!! Form::open(['url'=>route('announcement.store'), 'class'=>'card-body', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+        {!! Form::open(['url'=>route('announcement.store'), 'class'=>'card-body wrapped-height', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
             <div class="content">
                 <input type="hidden" name="username" value="{{ Auth::user()->username }}">
                 <input type="hidden" name="ann_id" value="{{ $ann_id }}">

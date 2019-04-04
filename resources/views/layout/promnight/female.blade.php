@@ -11,8 +11,8 @@
             </form> --}}
 
             <div class="wrapper column">
+                <h1>PROM QUEEN NOMINATION</h1>
                 <div class="col-3">
-                    PROM QUEEN NOMINATION
                     @foreach($females as $female)
                         <form action="{{ route('promnight.votefemale') }}" class="flex-centered" method="post">
                             {{-- <div class="btn fixed inverted rounded --color-primary">

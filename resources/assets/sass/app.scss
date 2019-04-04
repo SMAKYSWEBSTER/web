@@ -171,6 +171,8 @@ a.btn {
 	max-width: 500px;
 
 	& > input {
+		font-family: Raleway, sans-serif;
+		color: #000;
 		background: transparent;
 		-webkit-appearance: none;
 		border: 0;
@@ -223,6 +225,7 @@ a.btn {
 	}
 
 	& > textarea {
+		font-family: Raleway, sans-serif;
 		background: transparent;
 		overflow: hidden;
 		box-sizing: border-box;
@@ -285,7 +288,6 @@ a.btn {
 		}
 	}
 }
-
 
 // Misc
 #logoutButton {

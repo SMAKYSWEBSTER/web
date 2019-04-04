@@ -5,18 +5,18 @@
     @if(Auth::check() == true)
         @if(Auth::user()->username == 'osis')
             <div class="wrapper card">
-                {!! Form::open(['url'=>route('promnight.store'), 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+                {!! Form::open(['url'=>route('promnight.store'), 'class'=>'card-body wrapped-height', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
                     <div class="content">
                         {!! Form::cInput('name') !!}
+                        <label class="inp">
+                            <select name="sex">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            <span class="label"></span>
+                            <span class="border"></span>
+                        </label>
                     </div>
-                    <label class="inp">
-                        <select name="sex">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                        <span class="label"></span>
-                        <span class="border"></span>
-                    </label>
                     <div class="action-bar">
                         <input class="btn" type="submit" value="Upload">
                     </div>

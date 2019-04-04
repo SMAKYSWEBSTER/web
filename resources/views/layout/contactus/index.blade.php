@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="wrapper card">
-        {!! Form::open(['url'=>route('contactus.store'), 'method'=>'POST', 'enctype'=>'multipart/form-data', 'class'=>'card-body']) !!} 
+        {!! Form::open(['url'=>route('contactus.store'), 'method'=>'POST', 'enctype'=>'multipart/form-data', 'class'=>'card-body wrapped-height']) !!} 
             <div class="content">
                 <h2>Contact Us</h2>
                 {!! Form::cInput('name') !!}

@@ -1,4 +1,4 @@
-<footer>
+<footer id="footer">
   <div class="top">
     <ul class="info">
       <li>SMA KATOLIK YOS SUDARSO BATAM</li>

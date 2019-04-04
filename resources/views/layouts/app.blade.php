@@ -11,13 +11,12 @@
         <!-- Global Site Tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114906629-1"></script>
         <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'UA-114906629-1');
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-114906629-1');
         </script>
-        
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link href="/photos/vektoryos.png" rel="icon">
         {{-- App Stylesheets --}}

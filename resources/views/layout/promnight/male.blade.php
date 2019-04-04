@@ -10,9 +10,9 @@
                 {{ csrf_field() }}
             </form> --}}
 
-            <div class="wrapper column">
+            <div class="wrapper banner">
+                <h1>PROM KING NOMINATION</h1>
                 <div class="col-3" style="justify-content:center;">
-                    PROM KING NOMINATION
                     @foreach($males as $male)
                         <form action="{{ route('promnight.votemale') }}" class="flex-centered" method="post">
                             {{-- <div class="btn fixed inverted rounded --color-primary">
