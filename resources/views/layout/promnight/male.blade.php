@@ -2,8 +2,8 @@
 
 @section("content")
 
-    @if(Auth::check() == true)
-        @if(Auth::user()->username == 'osis')
+    {{-- @if(Auth::check() == true)
+        @if(Auth::user()->username == 'osis') --}}
 
             {{-- <form class="action-bar" action="{{ route('promnight.admin') }}" method="GET" id="viewdeleted">
                 <input class="btn" type="submit" value="Admin">
@@ -12,6 +12,7 @@
 
             <div class="wrapper column">
                 <div class="col-3" style="justify-content:center;">
+                    PROM KING NOMINATION
                     @foreach($males as $male)
                         <form action="{{ route('promnight.votemale') }}" class="flex-centered" method="post">
                             {{-- <div class="btn fixed inverted rounded --color-primary">
@@ -23,19 +24,7 @@
                         </form>
                     @endforeach
                 </div>
-                <div class="col-3">
-                    @foreach($females as $female)
-                        <form action="{{ route('promnight.votefemale') }}" class="flex-centered" method="post">
-                            {{-- <div class="btn fixed inverted rounded --color-primary">
-                                {{ $male->name }}
-                            </div> --}}
-                            <input type="hidden" name="id" value="{{ $female->id }}">
-                            <input type="submit" class="btn fixed inverted rounded --color-primary" value="{{ $female->name }}">
-                            {{ csrf_field() }}
-                        </form>
-                    @endforeach
-                </div>
             </div>
-        @endif
-    @endif
+        {{-- @endif
+    @endif --}}
 @endsection

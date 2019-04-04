@@ -8,12 +8,18 @@ use Illuminate\Http\Request;
 
 class PromnightController extends Controller
 {
-    public function index()
+    public function male()
     {
     	$males = Promnight::where('sex','male')->get();
-    	$females = Promnight::where('sex','female')->get();
 
-    	return view('layout.promnight.index', ['males'=>$males, 'females'=>$females]);
+    	return view('layout.promnight.male', ['males'=>$males]);
+    }
+
+    public function female()
+    {
+        $females = Promnight::where('sex','female')->get();
+
+        return view('layout.promnight.female', ['females'=>$females]);
     }
 
     public function store(Request $request)
@@ -28,7 +34,7 @@ class PromnightController extends Controller
         $promnight->sex = $request->Input('sex');
         $promnight->save();
 
-		return redirect()->route('promnight.index');
+		return redirect()->route('promnight.admin');
     }
 
     public function votemale(Request $request) {
@@ -37,7 +43,7 @@ class PromnightController extends Controller
     	$vote->sex = 'male';
     	$vote->save();
 
-    	return redirect()->route('success');
+    	return redirect()->route('success.male');
     }
 
     public function votefemale(Request $request) {
@@ -46,7 +52,7 @@ class PromnightController extends Controller
     	$vote->sex = 'female';
     	$vote->save();
 
-    	return redirect()->route('success');
+    	return redirect()->route('success.female');
     }
 
     public function admin() {
