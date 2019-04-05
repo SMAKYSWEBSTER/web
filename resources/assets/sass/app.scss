@@ -129,7 +129,7 @@ select {
 	}
 
 	&.fixed {
-		width: 50%;
+		width: 100%;
 		text-align: center;
 		margin: .5em auto;
 	}
@@ -881,7 +881,7 @@ footer {
 
 		& > form {
 			margin: 0 auto;
-			text-align: left;
+			text-align: center;
 			display: inline-block;
 			width: 30%;
 		}
@@ -1286,6 +1286,10 @@ footer {
 
 			& > p {
 				margin: 0;
+			}
+
+			& > form {
+				width: 50%;
 			}
 		}
 

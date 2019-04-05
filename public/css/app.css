@@ -4994,7 +4994,7 @@ select {
 }
 
 .btn.fixed {
-  width: 50%;
+  width: 100%;
   text-align: center;
   margin: .5em auto;
 }
@@ -5860,7 +5860,7 @@ footer > .copyright {
 
 .wrapper.banner > form {
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
   display: inline-block;
   width: 30%;
 }
@@ -6294,6 +6294,10 @@ footer > .copyright {
 
   .wrapper.banner > p {
     margin: 0;
+  }
+
+  .wrapper.banner > form {
+    width: 50%;
   }
 
   .wrapper.card > .card-body {

@@ -12,18 +12,16 @@
 
             <div class="wrapper banner">
                 <h1>PROM KING NOMINATION</h1>
-                <div class="col-3" style="justify-content:center;">
-                    @foreach($males as $male)
-                        <form action="{{ route('promnight.votemale') }}" class="flex-centered" method="post">
-                            {{-- <div class="btn fixed inverted rounded --color-primary">
-                                {{ $male->name }}
-                            </div> --}}
-                            <input type="hidden" name="id" value="{{ $male->id }}">
-                            <input type="submit" class="btn fixed inverted rounded --color-primary" value="{{ $male->name }}">
-                            {{ csrf_field() }}
-                        </form>
-                    @endforeach
-                </div>
+                @foreach($males as $male)
+                    <form action="{{ route('promnight.votemale') }}" class="flex-centered" method="post">
+                        {{-- <div class="btn fixed inverted rounded --color-primary">
+                            {{ $male->name }}
+                        </div> --}}
+                        <input type="hidden" name="id" value="{{ $male->id }}">
+                        <input type="submit" class="btn fixed inverted rounded --color-primary" value="{{ $male->name }}">
+                        {{ csrf_field() }}
+                    </form>
+                @endforeach
             </div>
         {{-- @endif
     @endif --}}

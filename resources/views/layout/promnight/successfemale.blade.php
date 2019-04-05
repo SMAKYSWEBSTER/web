@@ -4,10 +4,10 @@
 
 @section('content')
 
-	<div style="padding: 10rem; text-align: center;">
-		Thanks For Your Vote!
+	<div class="wrapper banner">
+		<h1>Thanks For Your Vote!</h1>
 		<form action="https://www.google.com/" method="GET">
-		    <input type="submit" class="btn fixed inverted rounded --color-primary" value="TAKE ME OUT!">
+		    <input type="submit" class="btn inverted rounded --color-primary" value="TAKE ME OUT!">
 		    {{ csrf_field() }}
 		</form>
 	</div>

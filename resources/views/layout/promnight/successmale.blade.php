@@ -4,10 +4,10 @@
 
 @section('content')
 
-	<div style="padding: 10rem; text-align: center;">
-		Continue To Vote Prom Queen
+	<div class="wrapper banner">
+		<h1>Continue To Vote Prom Queen</h1>
 		<form action="{{ route('promnight.female') }}" method="GET">
-		    <input type="submit" class="btn fixed inverted rounded --color-primary" value="CONTINUE">
+		    <input type="submit" class="btn inverted rounded --color-primary" value="CONTINUE">
 		    {{ csrf_field() }}
 		</form>
 	</div>

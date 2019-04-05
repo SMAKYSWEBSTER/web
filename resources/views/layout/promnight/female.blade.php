@@ -10,20 +10,18 @@
                 {{ csrf_field() }}
             </form> --}}
 
-            <div class="wrapper column">
+            <div class="wrapper banner">
                 <h1>PROM QUEEN NOMINATION</h1>
-                <div class="col-3">
-                    @foreach($females as $female)
-                        <form action="{{ route('promnight.votefemale') }}" class="flex-centered" method="post">
-                            {{-- <div class="btn fixed inverted rounded --color-primary">
-                                {{ $male->name }}
-                            </div> --}}
-                            <input type="hidden" name="id" value="{{ $female->id }}">
-                            <input type="submit" class="btn fixed inverted rounded --color-primary" value="{{ $female->name }}">
-                            {{ csrf_field() }}
-                        </form>
-                    @endforeach
-                </div>
+                @foreach($females as $female)
+                    <form action="{{ route('promnight.votefemale') }}" class="flex-centered" method="post">
+                        {{-- <div class="btn fixed inverted rounded --color-primary">
+                            {{ $male->name }}
+                        </div> --}}
+                        <input type="hidden" name="id" value="{{ $female->id }}">
+                        <input type="submit" class="btn fixed inverted rounded --color-primary" value="{{ $female->name }}">
+                        {{ csrf_field() }}
+                    </form>
+                @endforeach
             </div>
         {{-- @endif
     @endif --}}
