@@ -5,7 +5,7 @@
 @if(Auth::check() == true)
     @if(Auth::user()->username == 'osis')
         <div class="wrapper card">
-            {!! Form::open(['url'=>route('facility.store'), 'class'=>'card-body', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+            {!! Form::open(['url'=>route('facility.store'), 'class'=>'card-body wrapped-height', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
                 <div class="content">
                     {!! Form::cInput('desc') !!}
                     <input type="file" name="photo" accept="image/*">

@@ -3,24 +3,27 @@
 @section('content')
 
 <div class="wrapper card">
-    <div class="content">
         @foreach($albumcovers as $albumcover)
-            @if(Auth::check() == true) 
+            @if(Auth::check() == true)
                 @if(Auth::user()->username == 'osis')
-                    {!! Form::open(['url'=>route('album.store'), 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
-                        <input type="hidden" name="id" value="{{ $albumcover->id }}">
-                        <input type="file" name="photos[]" multiple>
-                        @if($errors->has('photos'))
-                            <p> {{ $errors->first('photos') }} </p>
-                        @endif
-                        <input type="submit" value="Upload">
+                    {!! Form::open(['url'=>route('album.store'),'class'=>'card-body wrapped-height' , 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+                        <div class="content">
+                            <input type="hidden" name="id" value="{{ $albumcover->id }}">
+                            <input type="file" name="photos[]" tabindex="-1" accept="image/*" multiple>
+                            Total Photos: {{ $count }}
+                            @if($errors->has('photos'))
+                                <p> {{ $errors->first('photos') }} </p>
+                            @endif
+                        </div>
+                        <div class="action-bar">
+                            <button type="button" class="btn img">Upload Photos</button>
+                            <input class="btn" type="submit" value="Upload">
+                        </div>
                         {{ csrf_field() }}
                     {!! Form::close() !!}
-                    Total Photos: {{ $count }}                        
                 @endif
             @endif
-        @endforeach            
-    </div>
+        @endforeach
 </div>
 <div class="wrapper polaroid">
     @foreach($albums as $album)

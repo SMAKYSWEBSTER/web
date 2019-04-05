@@ -96,6 +96,22 @@ $(document).ready(function()
     })
   })
 
+  let contentHeight = $('.card-body > .content').outerHeight(true)
+  let barHeight = $('.card-body > .action-bar').outerHeight(true)
+  $('.card-body.wrapped-height').height(contentHeight + barHeight)
+
+  let footerHeight = document.getElementById('footer').clientHeight
+  let viewportHeight = window.innerHeight
+  let containerHeight = document.body.clientHeight + footerHeight
+
+  if(viewportHeight >= containerHeight) {
+    let footer = document.getElementById('footer')
+    footer.style.position = 'absolute'
+    footer.style.bottom = '0'
+    footer.style.width = '100%'
+  }
+
+
   //Textarea autoexpand
   // $('textarea').one('focus', function() {
   //   let savedValue = this.value

@@ -38,15 +38,21 @@ Route::get('/myaccount', 'MyaccountController@index')->name('myaccount.index');
     Route::patch('/myaccount/{myaccount}/firstupdate', 'MyaccountController@firstupdate')->name('myaccount.firstupdate');
     Route::patch('/myaccount/{myaccount}/lastupdate', 'MyaccountController@lastupdate')->name('myaccount.lastupdate');
 
-Route::view('/', 'layout.home')->name('layout.home');
+// Route::view('/', 'layout.home')->name('layout.home');
 Route::view('/extracurricular', 'layout.extracurricular')->name('layout.extracurricular');
 Route::view('/history', 'layout.history')->name('layout.history');
 Route::view('/edufair', 'layout.edufair')->name('layout.edufair');
 
-Route::get('/promnight', 'PromnightController@index')->name('promnight.index');
+Route::get('/promnight', 'PromnightController@male')->name('promnight.male');
+Route::get('/promnight/female', 'PromnightController@female')->name('promnight.female');
+    Route::get('/', 'PromnightController@male');
     Route::post('/promnight/store', 'PromnightController@store')->name('promnight.store');
     Route::post('/promnight/vote/male', 'PromnightController@votemale')->name('promnight.votemale');
     Route::post('/promnight/vote/female', 'PromnightController@votefemale')->name('promnight.votefemale');
     Route::get('/promnight/admin', 'PromnightController@admin')->name('promnight.admin');
+    Route::view('success/male', 'layout.promnight.successmale')->name('success.male');
+    Route::view('success/female', 'layout.promnight.successfemale')->name('success.female');
+    Route::delete('/promnight/{id}', 'PromnightController@destroy')->name('promnight.destroy');
+
 
 // Route::get('/home', 'HomeController@index')->name('home');

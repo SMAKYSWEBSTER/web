@@ -5,18 +5,18 @@
     @if(Auth::check() == true)
         @if(Auth::user()->username == 'osis')
             <div class="wrapper card">
-                {!! Form::open(['url'=>route('promnight.store'), 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+                {!! Form::open(['url'=>route('promnight.store'), 'class'=>'card-body wrapped-height', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
                     <div class="content">
                         {!! Form::cInput('name') !!}
+                        <label class="inp">
+                            <select name="sex">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                            <span class="label"></span>
+                            <span class="border"></span>
+                        </label>
                     </div>
-                    <label class="inp">
-                        <select name="sex">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                        <span class="label"></span>
-                        <span class="border"></span>
-                    </label>
                     <div class="action-bar">
                         <input class="btn" type="submit" value="Upload">
                     </div>
@@ -28,11 +28,21 @@
                 <div class="col-3">
                     @foreach($promkings as $promking)
                         <p>PROM KING NOMINATION : {{ $promking->name }}, votes: {{ count($promking->votes) }}</p>
+                        <form action="{{ route('promnight.destroy', $promking->id) }}" method="POST">
+                            <input type="hidden" name="_method" value="delete">
+                            <input class="btn" type="submit" value="Delete">
+                            {{ csrf_field() }}
+                        </form>
                     @endforeach
                 </div>
                 <div class="col-3">
                     @foreach($promqueens as $promqueen)
                         <p>PROM QUEEN NOMINATION : {{ $promqueen->name }}, votes: {{ count($promqueen->votes) }}</p>
+                        <form action="{{ route('promnight.destroy', $promqueen->id) }}" method="POST">
+                            <input type="hidden" name="_method" value="delete">
+                            <input class="btn" type="submit" value="Delete">
+                            {{ csrf_field() }}
+                        </form>
                     @endforeach
                 </div>
             </div>

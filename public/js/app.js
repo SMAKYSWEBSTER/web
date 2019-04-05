@@ -172,6 +172,21 @@ $(document).ready(function () {
     });
   });
 
+  var contentHeight = $('.card-body > .content').outerHeight(true);
+  var barHeight = $('.card-body > .action-bar').outerHeight(true);
+  $('.card-body.wrapped-height').height(contentHeight + barHeight);
+
+  var footerHeight = document.getElementById('footer').clientHeight;
+  var viewportHeight = window.innerHeight;
+  var containerHeight = document.body.clientHeight + footerHeight;
+
+  if (viewportHeight >= containerHeight) {
+    var footer = document.getElementById('footer');
+    footer.style.position = 'absolute';
+    footer.style.bottom = '0';
+    footer.style.width = '100%';
+  }
+
   //Textarea autoexpand
   // $('textarea').one('focus', function() {
   //   let savedValue = this.value
