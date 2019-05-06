@@ -60,15 +60,15 @@ $(document).ready(function()
 
   //Image Modal
 
-  $(this).on('click','[class$="-img"]', function() {
-    $img_src = $(this).children().attr('src')
-    $('.modal.image > img').attr('src', $img_src)
-    $('.modal.image').css('display', 'block')
-  })
+  // $(this).on('click','[class$="-img"]', function() {
+  //   $img_src = $(this).children().attr('src')
+  //   $('.modal.image > img').attr('src', $img_src)
+  //   $('.modal.image').css('display', 'block')
+  // })
 
-  $('.modal.image > span').on('click', function() {
-    $('.modal.image').css('display', 'none')
-  })
+  // $('.modal.image > span').on('click', function() {
+  //   $('.modal.image').css('display', 'none')
+  // })
 
   //Material Design Input
   $('.inp').on('click', function() {

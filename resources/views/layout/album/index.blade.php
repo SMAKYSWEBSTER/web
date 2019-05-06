@@ -28,14 +28,14 @@
 <div class="wrapper polaroid">
     @foreach($albums as $album)
         <div class="polaroid-img">
-            <img src="{{ asset('/albumosis/'.$album->photos) }}">
+            <img src="{{ asset('/albumosis/small/'.$album->photos)}}">
         </div>
         @if(Auth::check() == true && Auth::user()->username == 'osis')
             {!! Form::open(['url'=>route('album.destroy', $album->id), 'method'=>'DELETE', 'enctype'=>'multipart/form-data']) !!}
                 <input type="hidden" name="album_id" value="{{ $album->album_id }}">
                 <input class="btn" type="submit" value="Delete">
                 {{ csrf_field() }}
-            </form>
+            {!! Form::close() !!}
         @endif
     @endforeach
 </div>

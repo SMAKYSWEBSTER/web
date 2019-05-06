@@ -14,7 +14,11 @@ class ActivityController extends Controller
 		if(Input::hasFile('album')) {
             $albumname = $album->getClientOriginalName();
             $location = public_path("albumcover/");
-            $album->move($location, $albumname);
+
+            $activity_banner = Image::make($album);
+            $activity_banner->fit(1350,260);
+            $activity_banner->move($location.$albumname);
+
             $activity->cover = $albumname;
         }
         $activity->albumname = $request->Input('albumname');

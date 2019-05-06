@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Auth::routes();
 Route::view('/login/success', 'layout.login.success');
 Route::resource('achievement', 'AchievementController');
@@ -38,14 +27,14 @@ Route::get('/myaccount', 'MyaccountController@index')->name('myaccount.index');
     Route::patch('/myaccount/{myaccount}/firstupdate', 'MyaccountController@firstupdate')->name('myaccount.firstupdate');
     Route::patch('/myaccount/{myaccount}/lastupdate', 'MyaccountController@lastupdate')->name('myaccount.lastupdate');
 
-// Route::view('/', 'layout.home')->name('layout.home');
+Route::view('/', 'layout.home')->name('layout.home');
 Route::view('/extracurricular', 'layout.extracurricular')->name('layout.extracurricular');
 Route::view('/history', 'layout.history')->name('layout.history');
 Route::view('/edufair', 'layout.edufair')->name('layout.edufair');
 
 Route::get('/promnight', 'PromnightController@male')->name('promnight.male');
 Route::get('/promnight/female', 'PromnightController@female')->name('promnight.female');
-    Route::get('/', 'PromnightController@male');
+    // Route::get('/', 'PromnightController@male');
     Route::post('/promnight/store', 'PromnightController@store')->name('promnight.store');
     Route::post('/promnight/vote/male', 'PromnightController@votemale')->name('promnight.votemale');
     Route::post('/promnight/vote/female', 'PromnightController@votefemale')->name('promnight.votefemale');

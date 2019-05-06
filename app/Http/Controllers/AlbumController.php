@@ -7,6 +7,7 @@ use App\Albumcover;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Intervention\Image\Facades\Image;
 
 class AlbumController extends Controller
 {
@@ -43,13 +44,38 @@ class AlbumController extends Controller
 		if(Input::hasFile('photos')) {
 			foreach($photos as $photo) {
 				$filename = $photo->getClientOriginalName();
-				$location = public_path("albumosis/");
-                $photo->move($location, $filename);
 
 				$album = new album;
 				$album->photos = $filename;
 				$album->album_id = $request->Input('id');
 				$album->save();
+
+                $location = public_path("albumosis/small/");
+                $album_small = Image::make($photo);
+                $album_small->fit(300,300);
+                $album_small->save($location.$filename);
+
+                $album_big = Image::make($photo);
+                $width_ratio = round($album_big->width());
+                $height_ratio = round($album_big->height());
+                while ($width_ratio >= 10) {
+                    if ($width_ratio % 2 == 1) {
+                        $width_ratio = $width_ratio + 1;
+                    }
+                    if ($width_ratio % 2 == 0) {
+                        $width_ratio = $width_ratio / 2;
+                    }
+                }
+                while ($height_ratio >= 5) {
+                    if ($height_ratio % 2 == 1) {
+                        $height_ratio = $height_ratio + 1;
+                    }
+                    if ($height_ratio % 2 == 0) {
+                        $height_ratio = $height_ratio / 2;
+                    }
+                }
+                $album_big->resize($width_ratio*100, $height_ratio*100);
+                $album_big->save('albumosis/big/'.$filename);
 			}
 		}
 
@@ -66,7 +92,6 @@ class AlbumController extends Controller
      */
     public function show($album)
     {
-        // dd($album);
         $albumcovers = Albumcover::where(['id'=>$album])->get();
         $albums = Album::where(['album_id'=>$album])->get();
 		$count = DB::table('album')->where('album_id',$album)->count();

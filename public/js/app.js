@@ -138,7 +138,13 @@ $(document).ready(function () {
 
   $(this).on('click', '[class$="-img"]', function () {
     $img_src = $(this).children().attr('src');
-    $('.modal.image > img').attr('src', $img_src);
+    $img_big_src = $img_src.replace('small','big');
+    $('.modal.image > img').attr('src', $img_big_src);
+    $.get($img_big_src, function() {
+        // 
+    }).fail(function() {
+        $('.modal.image > img').attr('src', $img_src);
+    });
     $('.modal.image').css('display', 'block');
   });
 

@@ -10,10 +10,13 @@
                     {!! Form::open(['url'=>route('activity.store'), 'class'=>'card-body wrapped-height', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
                         <div class="content">
                             {!! Form::cInput('albumname') !!}
-                            <input type="file" name="album" accept='image/*'>
+                            <input type="file" name="album" tabindex="-1" accept="image/*">
+                            @if($errors->has('album'))
+                                <p> {{ $errors->first('album') }} </p>
+                            @endif
                         </div>
                         <div class="action-bar">
-                            <button type="button" class="btn img" tabindex="-1">select an album cover</button>
+                            <button type="button" class="btn img">select an album cover</button>
                             <input class="btn" type="submit" value="Upload">
                         </div>
                         {{ csrf_field() }}
