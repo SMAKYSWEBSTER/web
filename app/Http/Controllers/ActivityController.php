@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Albumcover;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Intervention\Image\Facades\Image;
 
 class ActivityController extends Controller
 {
@@ -17,7 +18,7 @@ class ActivityController extends Controller
 
             $activity_banner = Image::make($album);
             $activity_banner->fit(1350,260);
-            $activity_banner->move($location.$albumname);
+            $activity_banner->save($location.$albumname);
 
             $activity->cover = $albumname;
         }

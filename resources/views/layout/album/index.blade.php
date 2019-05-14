@@ -16,7 +16,7 @@
                             @endif
                         </div>
                         <div class="action-bar">
-                            <button type="button" class="btn img">Upload Photos</button>
+                            {{-- <button type="button" class="btn img">Upload Photos</button> --}}
                             <input class="btn" type="submit" value="Upload">
                         </div>
                         {{ csrf_field() }}

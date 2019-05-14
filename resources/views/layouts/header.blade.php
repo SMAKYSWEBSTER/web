@@ -27,7 +27,7 @@
                 @if(Auth::user()->username == 'tatausaha')
                     <li><a href="{{ route('manage.index') }}">Manage</a></li>
                 @else
-                    <li><a href="{{ route('promnight.admin')}}">Prom Night 2019</a></li>
+                    {{-- <li><a href="{{ route('promnight.admin')}}">Prom Night 2019</a></li> --}}
                 @endif
                 <li>
                     <a id="logoutButton">Log Out</a>

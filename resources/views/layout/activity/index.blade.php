@@ -16,7 +16,7 @@
                             @endif
                         </div>
                         <div class="action-bar">
-                            <button type="button" class="btn img">select an album cover</button>
+                           {{--  <button type="button" class="btn img">select an album cover</button> --}}
                             <input class="btn" type="submit" value="Upload">
                         </div>
                         {{ csrf_field() }}
@@ -41,12 +41,13 @@
                     {!! Form::close() !!}
                     {!! Form::open(['url'=>route('activity.update', $albumcover->id), 'method'=>'PATCH', 'enctype'=>'multipart/form-data']) !!}
                         <div class="bottom-bar">
-                            {!! Form::cInput('albumname') !!}
+                            {!! Form::cInput('albumname', $albumcover->albumname) !!}
                             {{-- <input type="text" name="albumname" placeholder="Edit Description" value="{{ $albumcover->albumname }}"> --}}
-                            <input type="file" name="album" value="{{ $albumcover->cover }}" accept="image/*" tabindex="-1">
+                            {{-- <input type="file" name="album" value="{{ $albumcover->cover }}" accept="image/*" tabindex="-1"> --}}
+                            <input type="file" name="album" value="{{ $albumcover->cover }}">
                         </div>
                         <div class="action-bar">
-                            <button type="button" class="btn img">edit album cover</button>
+                            {{-- <button type="button" class="btn img">edit album cover</button> --}}
                             <input class="btn" type="submit" value="Edit">
                         </div>
                         {{ csrf_field() }}

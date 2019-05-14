@@ -10,7 +10,7 @@
             {{ csrf_field() }}
         </form>
         {!! Form::open(['url'=>route('announcement.store'), 'class'=>'card-body wrapped-height', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
-            <div class="content">
+            <div class="content" id="announcement_form">
                 <input type="hidden" name="username" value="{{ Auth::user()->username }}">
                 <input type="hidden" name="ann_id" value="{{ $ann_id }}">
                 @foreach($users as $user)
@@ -23,7 +23,8 @@
             </div>
             {{-- <button type="button" class="btn img" tabindex="-1">select an image</button> --}}
             <div class="action-bar">
-                <button type="button" class="btn file">select a file</button>
+                <button id="add_paragraph" type="button" class="btn">Add Paragraph</button>
+                {{-- <button type="button" class="btn file">select a file</button> --}}
                 <input class="btn" type="submit" value="Upload">
             </div>
             {{ csrf_field() }}

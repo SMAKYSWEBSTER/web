@@ -160,23 +160,23 @@ $(document).ready(function () {
 
   //Custom Image Upload
 
-  $image = $('input[type=file][accept="image/*"]').addClass('image-upload-hidden');
-  $('.btn.img').on('click', function () {
-    $image.trigger('focus').trigger('click');
-    // $image.change(function() {
-    //   let filename = $file.val().split('\\').pop()
-    //   $('.image-upload-input').val(filename).attr('title', filename).trigger('focus')
-    // })
-  });
+  // $image = $('input[type=file][accept="image/*"]').addClass('image-upload-hidden');
+  // $('.btn.img').on('click', function () {
+  //   $image.trigger('focus').trigger('click');
+  //   // $image.change(function() {
+  //   //   let filename = $file.val().split('\\').pop()
+  //   //   $('.image-upload-input').val(filename).attr('title', filename).trigger('focus')
+  //   // })
+  // });
 
-  $file = $('input[type=file]').addClass('file-upload-hidden');
-  $('.btn.file').on('click', function () {
-    $file.trigger('focus').trigger('click');
-    $file.change(function () {
-      var filename = $file.val().split('\\').pop();
-      $('.file-upload-input').val(filename).attr('title', filename).trigger('focus');
-    });
-  });
+  // $file = $('input[type=file]').addClass('file-upload-hidden');
+  // $('.btn.file').on('click', function () {
+  //   $file.trigger('focus').trigger('click');
+  //   $file.change(function () {
+  //     var filename = $file.val().split('\\').pop();
+  //     $('.file-upload-input').val(filename).attr('title', filename).trigger('focus');
+  //   });
+  // });
 
   var contentHeight = $('.card-body > .content').outerHeight(true);
   var barHeight = $('.card-body > .action-bar').outerHeight(true);
@@ -210,6 +210,17 @@ $(document).ready(function () {
   //   $value = $(this).val()
   //   $('.img-preview > img').attr('src', $value)
   // })
+
+  // Add Paragraph
+  $('#add_paragraph').on('click', function() {
+      let textarea = $(this).parent().siblings('#announcement_form').children()[4];
+      console.log(textarea);
+      $('#announcement_form').append(`<label class="inp">
+          <textarea rows="4" cols="50" name="{{ $name }}" placeholder="&nbsp;">{{ $value ?? old($name) }}</textarea>
+          <span class="label">Description</span>
+          <span class="border"></span>
+      </label>`);
+  });
 });
 
 /***/ }),
