@@ -23,8 +23,8 @@
             </div>
             {{-- <button type="button" class="btn img" tabindex="-1">select an image</button> --}}
             <div class="action-bar">
-                <button id="add_paragraph" type="button" class="btn">Add Paragraph</button>
-                {{-- <button type="button" class="btn file">select a file</button> --}}
+                <button id="addParagraph" type="button" class="btn">Add Paragraph</button>
+                <button type="button" class="btn file">select a file</button>
                 <input class="btn" type="submit" value="Upload">
             </div>
             {{ csrf_field() }}

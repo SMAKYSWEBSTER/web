@@ -17,4 +17,4 @@ var css = 'public/css';
 var js = 'public/js';
 
 mix.js(`${es6}app.js`, js)
-    .sass(`${sass}app.scss`, css);
+    .sass(`${sass}app.scss`, css, { implementation: require('node-sass') });
