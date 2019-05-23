@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    @if(Auth::check() == true && Auth::user()->username == 'tatausaha')
+    <div class="wrapper banner">
+        @if(Auth::check() == true && Auth::user()->username == 'tatausaha')
         <form class="wrapper hero" action="{{ route('manage.readed') }}" method="POST">
             <input class="btn" type="submit" value="VIEW READ">
             {{ csrf_field() }}
@@ -39,4 +40,5 @@
             <h1>Oops, you accessed this page directly, and there's no content for you to see here!</h1>
         </div>
     @endif
+    </div>
 @endsection

@@ -5693,6 +5693,7 @@ footer > .copyright {
   width: 100%;
   margin-left: 1rem;
   text-align: left;
+  text-transform: capitalize;
 }
 
 .wrapper.announcement > .profile-info > .date-created {

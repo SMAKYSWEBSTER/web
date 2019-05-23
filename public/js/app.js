@@ -144,15 +144,19 @@ $(document).ready(function () {
       $current.removeClass('active');
       $prev.addClass('active');
     }
-  }); //Image Modal
-  // $(this).on('click','[class$="-img"]', function() {
-  //   $img_src = $(this).children().attr('src')
-  //   $('.modal.image > img').attr('src', $img_src)
-  //   $('.modal.image').css('display', 'block')
-  // })
-  // $('.modal.image > span').on('click', function() {
-  //   $('.modal.image').css('display', 'none')
-  // })
+  }); 
+
+  //Image Modal
+  $(this).on('click','[class$="-img"]', function(event) {
+    // $img_src = $(this).children().attr('src')
+    $img_src = event.target.src
+    $('.modal.image > img').attr('src', $img_src)
+    $('.modal.image').css('display', 'block')
+  })
+  $('.modal.image > span').on('click', function() {
+    $('.modal.image').css('display', 'none')
+  })
+
   //Material Design Input
 
   $('.inp').on('click', function () {
@@ -189,12 +193,16 @@ $(document).ready(function () {
     footer.style.width = '100%';
   }
 
+
+  // Add Paragraph
   $addParagraphButton = $('#addParagraph');
+  $count = 1;
   $addParagraphButton.on('click', function () {
+    $count = $count + 1;
     $actionBar = $(this).parent('.action-bar');
     $content = $actionBar.siblings('.content');
     $label = $content.children('.inp:has(textarea)').last();
-    $label.after("\n    <label class=\"inp\">\n      <textarea rows=\"4\" cols=\"50\" name=\"description\" placeholder=\"&nbsp;\"></textarea>\n      <span class=\"label\">Paragraph</span>\n      <span class=\"border\"></span>\n    </label>\n    ");
+    $label.after('\n    <label class=\"inp\">\n' + '<textarea rows=\"4\" cols=\"50\" name=\"description[]\" placeholder=\"&nbsp;\"></textarea>\n' + '<span class=\"label\">Paragraph '+ $count +'</span>\n' + '<span class=\"border\"></span>\n    </label>\n    ');
     $actionBarHeight = $actionBar.outerHeight(true);
     $contentHeight = $content.outerHeight(true);
     $card = $actionBar.parent('.card-body');
