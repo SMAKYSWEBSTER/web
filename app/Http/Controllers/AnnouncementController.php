@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AnnDesc;
 use App\AnnFile;
 use App\Announcement;
 use App\File;
@@ -20,8 +21,8 @@ class AnnouncementController extends Controller
             $video_id = str_after($request->Input('link'),'https://www.youtube.com/watch?v=');
             $announcement->video_id = $video_id;
         }
-        $announcement->description = $request->Input('description');
         $announcement->link = $request->Input('link');
+        $announcement->title = $request->Input('title');
         $announcement->save();
     }
 
@@ -51,11 +52,7 @@ class AnnouncementController extends Controller
         }
         return ;
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $session = $this->session();
@@ -65,34 +62,33 @@ class AnnouncementController extends Controller
         if (Announcement::withTrashed()->latest()->first() == true) {
             $ann_id = Announcement::withTrashed()->latest()->first()->id + 1;
         } else {
-            $ann_id = null;
+            $ann_id = 1;
         }
+        // dd(Announcement::withTrashed()->latest()->first());
 
 		return view('layout.announcement.index', ['users'=>$users, 'generals'=>$generals, 'selfs'=>$selfs, 'ann_id'=>$ann_id]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        // dd(Route::getCurrentRoute()->getName());
         $this->validate($request, [
 			'description'=>'required|max:5000'
 		]);
+
+        foreach($request->Input('description') as $descriptions) {
+            if ($descriptions != null) {
+                $ann_desc = new AnnDesc;
+                $ann_desc->announcement_id = $request->Input('ann_id');
+                $ann_desc->description = $descriptions;
+                $ann_desc->save();
+            }
+        }
+
 		$announcement = new Announcement;
 		$announcement->username = $request->Input('username');
 		$announcement->propic = $request->Input('propic');
@@ -109,41 +105,37 @@ class AnnouncementController extends Controller
 		return redirect()->route('announcement.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Announcement  $announcement
-     * @return \Illuminate\Http\Response
-     */
     public function show(Announcement $announcement)
     {
         return view('layout.announcement.show', ['announcement'=>$announcement]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Announcement  $announcement
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Announcement $announcement)
     {
         return view('layout.announcement.edit', ['announcement'=>$announcement]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Announcement  $announcement
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Announcement $announcement)
     {
+        // dd(array_combine($announcement->descs, $request->Input('description')));
         $this->validate($request, [
+            'title'=>'required',
 			'description'=>'required|max:5000'
 		]);
+
 		$this->uploadHandle($request,$announcement);
+
+        $description_update_array = array();
+        foreach($request->Input('description') as $description_update) {
+            array_push($description_update_array, $description_update);
+        }
+
+        $i = 0;
+        foreach($announcement->descs as $description) {
+            $description->description = $description_update_array[$i];
+            $description->save();
+            $i = $i + 1;
+        }
 
 		return redirect('/announcement');
     }
@@ -158,25 +150,23 @@ class AnnouncementController extends Controller
         return redirect('/announcement');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Announcement  $announcement
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Announcement $announcement)
     {
+        // dd($announcement->descs());
         $announcement->delete();
+        $announcement->descs()->delete();
 
         return redirect()->route('announcement.index');
     }
 
     public function deleted()
     {
-        $session = $this->session();
-		$deleteds = DB::table('announcements')->where('username',$session)->whereNotNull('deleted_at')->get();
-        // $files = AnnFile::where('announcement_id',$deleteds[20]->id)->get();
-        // dd(AnnFile::where('announcement_id',$deleteds[20]->id)->get());
+        $deleteds = Announcement::with('descs')->where(
+                        function($query) {
+                            $session = $this->session();
+                            $query->where('username','=',$session)
+                            ->whereNotNull('deleted_at');
+                        })->withTrashed()->get();
 
 		return view('layout.announcement.deleted', ['deleteds'=>$deleteds]);
     }

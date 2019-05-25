@@ -1,22 +1,33 @@
 <div class="profile-info">
     <img src="{{ asset('/propic/'.$type->propic) }}" id="announcement_img">
-    <p class="publisher"> Publisher: {{ $type->username }} </p>
+    <p class="publisher">{{ $type->title }}</p>
     <p class="date_created"> {{ $type->created_at }} </p>
 </div>
-    <div class="desc">
-        <p> {{ $type->description }} </p>
-        @if(isset($type->files))
-            @foreach($type->files as $file)
-                <a href="{{ asset("/file/".$file->file) }}" download >{{ $file->file }}</a>
+
+<div class="desc">
+    @if(Route::getCurrentRoute()->getName() == 'announcement.deleted')
+        @foreach($type->descs()->withTrashed()->get() as $descs)
+            <p style="text-indent:2em;">{{ $descs->description }}</p>
+        @endforeach
+        @else
+            @foreach($type->descs as $descs)
+                <p style="text-indent:2em;">{{ $descs->description }}</p>
             @endforeach
-        @endif
-        <a href="{{ $type->link }}">{{ $type->link }}</a>
-    </div>
-@if($type->video_id)
-<div class="video-player">
-    <iframe src="https://www.youtube.com/embed/{{ $type->video_id }}"></iframe>
+    @endif
+    @if(isset($type->files))
+        @foreach($type->files as $file)
+            <a href="{{ asset("/file/".$file->file) }}" download >{{ $file->file }}</a>
+        @endforeach
+    @endif
+    <a href="{{ $type->link }}">{{ $type->link }}</a>
 </div>
+
+@if($type->video_id)
+    <div class="video-player">
+        <iframe src="https://www.youtube.com/embed/{{ $type->video_id }}"></iframe>
+    </div>
 @endif
+
 @if(isset($type->files))
     @if(str_contains($type->files, '.mp4') || str_contains($type->files, '.ogg'))
         @foreach($type->files as $file)
@@ -32,9 +43,11 @@
         <div class="announcement-gallery">
             <div class="announcement-img">
                 @foreach($type->files as $file)
-                    <img src="file/{{ $file->file }}" alt="No Photo">
+                    <img src="{{ asset("/file/".$file->file) }}" alt="No Photo">
+                    {{-- <img src="file/{{ $file->file }}" alt="No Photo"> --}}
                 @endforeach
             </div>
         </div>
     @endif
 @endif
+    

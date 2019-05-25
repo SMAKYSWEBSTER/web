@@ -111,6 +111,30 @@ $(document).ready(function()
     footer.style.width = '100%'
   }
 
+  $addParagraphButton = $('#addParagraph')
+  $addParagraphButton.on('click', function() {
+    $actionBar = $(this).parent('.action-bar')
+    $content = $actionBar.siblings('.content')
+    $label = $content.children('.inp:has(textarea)').last()
+    $label.after(`
+    <label class="inp">
+      <textarea rows="4" cols="50" name="description" placeholder="&nbsp;"></textarea>
+      <span class="label">Paragraph</span>
+      <span class="border"></span>
+    </label>
+    `)
+    $actionBarHeight = $actionBar.outerHeight(true)
+    $contentHeight = $content.outerHeight(true)
+    $card = $actionBar.parent('.card-body')
+    $card.outerHeight($contentHeight + $actionBarHeight)
+    // console.log($contents)
+    // $textarea = $actionBar.children('.inp')
+    // console.log($textarea)
+    // $label = $content.children(
+    //   $('.inp:has(textarea[name=description])')
+    //   )
+  })
+
 
   //Textarea autoexpand
   // $('textarea').one('focus', function() {

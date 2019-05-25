@@ -9,6 +9,7 @@
 
 	<div class="wrapper banner">
 		@foreach($deleteds as $deleted)
+        {{-- {{ dd($deleted) }} --}}
 			<div class="wrapper announcement">
 				@include('layout.announcement.partial.content',['type'=>$deleted])
 		        <div class="action-bar">

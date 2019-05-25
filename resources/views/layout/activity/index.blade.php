@@ -10,7 +10,7 @@
                     {!! Form::open(['url'=>route('activity.store'), 'class'=>'card-body wrapped-height', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
                         <div class="content">
                             {!! Form::cInput('albumname') !!}
-                            <input type="file" name="album" tabindex="-1" accept="image/*">
+                            <input class="exception-input" type="file" name="album" tabindex="-1" accept="image/*">
                             @if($errors->has('album'))
                                 <p> {{ $errors->first('album') }} </p>
                             @endif
@@ -44,10 +44,10 @@
                             {!! Form::cInput('albumname', $albumcover->albumname) !!}
                             {{-- <input type="text" name="albumname" placeholder="Edit Description" value="{{ $albumcover->albumname }}"> --}}
                             {{-- <input type="file" name="album" value="{{ $albumcover->cover }}" accept="image/*" tabindex="-1"> --}}
-                            <input type="file" name="album" value="{{ $albumcover->cover }}">
+                            <input class="exception-input" type="file" name="album" value="{{ $albumcover->cover }}">
                         </div>
                         <div class="action-bar">
-                            {{-- <button type="button" class="btn img">edit album cover</button> --}}
+                            <button type="button" class="btn img exception-button">edit album cover</button>
                             <input class="btn" type="submit" value="Edit">
                         </div>
                         {{ csrf_field() }}

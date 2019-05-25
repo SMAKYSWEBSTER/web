@@ -1,35 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="wrapper banner">
 
     @if(Auth::check() == true)
-    <div class="wrapper card">
-        <form class="action-bar" action="{{ route('announcement.deleted') }}" method="POST" id="viewdeleted">
-            <input class="btn" type="submit" value="View Deleted">
-            {{ csrf_field() }}
-        </form>
-        {!! Form::open(['url'=>route('announcement.store'), 'class'=>'card-body wrapped-height', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
-            <div class="content" id="announcement_form">
-                <input type="hidden" name="username" value="{{ Auth::user()->username }}">
-                <input type="hidden" name="ann_id" value="{{ $ann_id }}">
-                @foreach($users as $user)
-                    <input type="hidden" name="propic" value="{{ $user->propic }}">
-                @endforeach
-                <h1>Create announcement</h1>
-                {!! Form::cTextarea('description') !!}
-                {!! Form::cInput('link') !!}
-                <input type="file" name="file[]" multiple tabindex="-1">
-            </div>
-            {{-- <button type="button" class="btn img" tabindex="-1">select an image</button> --}}
-            <div class="action-bar">
-                <button id="add_paragraph" type="button" class="btn">Add Paragraph</button>
-                {{-- <button type="button" class="btn file">select a file</button> --}}
-                <input class="btn" type="submit" value="Upload">
-            </div>
-            {{ csrf_field() }}
-        {!! Form::close() !!}
-    </div>
+        <div class="wrapper card">
+            <form class="action-bar" action="{{ route('announcement.deleted') }}" method="POST" id="viewdeleted">
+                <input class="btn" type="submit" value="View Deleted">
+                {{ csrf_field() }}
+            </form>
+            {!! Form::open(['url'=>route('announcement.store'), 'class'=>'card-body wrapped-height', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+                <div class="content" id="announcement_form">
+                    <input type="hidden" name="username" value="{{ Auth::user()->username }}">
+                    <input type="hidden" name="ann_id" value="{{ $ann_id }}">
+                    @foreach($users as $user)
+                        <input type="hidden" name="propic" value="{{ $user->propic }}">
+                    @endforeach
+                    <h1>Create announcement</h1>
+                    {!! Form::cInput('title') !!}
+                    {!! Form::cTextarea('description') !!}
+                    {!! Form::cInput('link') !!}
+                    {{-- <input type="file" name="file[]" multiple tabindex="-1"> --}}
+                    <input type="file" name="file[]" class="exception-input" multiple>
+                </div>
+                {{-- <button type="button" class="btn img" tabindex="-1">select an image</button> --}}
+                <div class="action-bar">
+                    <button id="addParagraph" type="button" class="btn">Add Paragraph</button>
+                    {{-- <button type="button" class="btn file">select a file</button> --}}
+                    <input class="btn" type="submit" value="Upload">
+                </div>
+                {{ csrf_field() }}
+            {!! Form::close() !!}
+        </div>
     @endif
 
     @if(Auth::check() == true)
@@ -67,8 +70,10 @@
         @endforeach
     @endif
 </div>
+
 <div class="modal image">
     <img src="" alt="No photo">
     <span><i class="fas fa-times"></i></span>
 </div>
+
 @endsection
