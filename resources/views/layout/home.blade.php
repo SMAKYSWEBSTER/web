@@ -37,7 +37,7 @@
 
 <div class="wrapper banner">
   <h1>Sambutan Kepala Sekolah</h1>
-  <img src="{{ asset('photos/kepala_sekolah.jpg') }}" class="pic">
+  <img src="{{ asset('photos/busumi.jpg') }}" class="pic">
   <p>Puji Syukur kita panjatkan kepada Tuhan Yang Maha Esa, sehingga SMAK Yos Sudarso Batam, sekarang mempunyai media komunikasi web sekolah. Tidak kata yang pantas untuk diucapkan, kecuali kata syukur nikmat atas segala limpahan rahmat, berkat, dan hidayat-Nya, sehingga kami masih bisa berkiprah dalam dunia pendidikan yang sangat mulia ini . Di era Globalisasi ini dan Informasi, kita dituntut untuk dapat mengikuti perkembangan tersebut terutama dalam hal informasi. Karena dengan informasi, pada hakekatnya adalah saling memberi dan menerima sehingga dalam kehidupan ini yang ada adalah saling melengkapi. Berkenan dengan rahmat Tuhan Yang Maha Esa, puji syukur kami dapat mempublishkan website SMAK Yos Sudarso Batam, Saya berharap dengan website ini akan berguna bagi kita semua. Atas Ketidaksempurnaan website kami, koreksi dan saran bersifat produktif dan inovatif sangat kami nantikan. Terima kasih!</p>
   <p class="sign">Sumiyati, S.Pd.</p>
 </div>
