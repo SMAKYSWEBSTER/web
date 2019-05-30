@@ -148,8 +148,13 @@ $(document).ready(function () {
 
   //Image Modal
   $(this).on('click','[class$="-img"]', function(event) {
-    // $img_src = $(this).children().attr('src')
-    $img_src = event.target.src
+    if ($(this).children().attr('src')) {
+      $img_src = $(this).children().attr('src')
+    } else {
+      $img_src = event.target.src;
+    }
+    // console.log($img_src);
+    // return;
     $('.modal.image > img').attr('src', $img_src)
     $('.modal.image').css('display', 'block')
   })

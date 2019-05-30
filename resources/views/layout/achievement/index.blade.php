@@ -29,7 +29,7 @@
   @foreach($achievements as $achievement)
       <div class="card-body">
         <div class="card-img">
-          <img src="achievements/{{ $achievement->photo }}" alt="No photo">
+          <img src="{{ asset('achievements/'.$achievement->photo) }}" alt="No photo">
           <h2>{{ $achievement->title }}</h2>
         </div>
         <ul class="content">
