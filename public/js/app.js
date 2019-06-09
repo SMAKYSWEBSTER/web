@@ -136,7 +136,7 @@ $(document).ready(function () {
     $current = $(this).siblings('img.active');
     $prev = $current.prev('img');
 
-    if ($prev.length != 0) {
+    if ($prev.length != 0) {home
       $current.removeClass('active');
       $prev.addClass('active');
     } else {
@@ -148,11 +148,13 @@ $(document).ready(function () {
 
   //Image Modal
   $(this).on('click','[class$="-img"]', function(event) {
-    if ($(this).children().attr('src')) {
-      $img_src = $(this).children().attr('src')
-    } else {
-      $img_src = event.target.src;
-    }
+    // $img_src = $(this).children().attr('src')
+    $img_src = event.target.src;
+    // if ($(this).children().attr('src')) {
+    //   $img_src = $(this).children().attr('src')
+    // } else {
+    //   $img_src = event.target.src;
+    // }
     // console.log($img_src);
     // return;
     $('.modal.image > img').attr('src', $img_src)
@@ -167,7 +169,9 @@ $(document).ready(function () {
   $('.inp').on('click', function () {
     $(this).children().find('input').trigger('focus');
     $('.alert').css('display', 'none');
-  }); //Custom Image Upload
+  }); 
+
+  //Custom Image Upload
 
   $image = $('input[type=file][accept="image/*"]').addClass('image-upload-hidden');
   $('.btn.img').on('click', function () {
@@ -233,6 +237,32 @@ $(document).ready(function () {
   //   $value = $(this).val()
   //   $('.img-preview > img').attr('src', $value)
   // })
+
+  // AJAX Delete Engine
+  $('body').on('click', '#destroy', function(event) {
+    event.preventDefault();
+    let row = $(this).parent().parent().parent();
+    if(confirm('Are You Sure to Delete this Item?')) {
+      let dataUrl = $(this).attr('data-url')
+      let content = $(this).attr('content')
+      $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': content
+        },
+        url: dataUrl,
+        method: 'DELETE',
+        dataType: 'JSON',
+        success: function(result) {
+          row.remove()
+        },
+        error: function(result) {
+          alert('delete error, try again!');
+        }
+      });
+    } else {
+      return;
+    }
+  });
 });
 
 /***/ }),

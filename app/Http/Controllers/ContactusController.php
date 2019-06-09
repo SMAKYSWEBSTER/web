@@ -40,7 +40,7 @@ class ContactusController extends Controller
 			'email'=>'required|email',
 			'phone'=>'required|numeric',
 			'topic'=>'required',
-			'details'=>'required|max:5000'
+			'details[]'=>'required|max:5000'
 		]);
 
 		$contactus = new Contactus;
@@ -48,7 +48,9 @@ class ContactusController extends Controller
 		$contactus->email = $request->Input('email');
 		$contactus->phone = $request->Input('phone');
 		$contactus->topic = $request->Input('topic');
-		$contactus->details = $request->Input('details');
+        foreach ($request->Input('details') as $details) {
+    		$contactus->details = $details;
+        }
 		$contactus->save();
 
 		return view('layout.success');

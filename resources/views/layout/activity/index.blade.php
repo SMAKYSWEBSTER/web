@@ -27,6 +27,7 @@
     </div>
 
     @foreach($albumcovers as $albumcover)
+        <div identity="{{ $albumcover->id }}">
             <div class="wrapper image">
                 <a href="{{ route('album.show', $albumcover->id) }}">
                     <img src="{{ asset('albumcover/'.$albumcover->cover) }}">
@@ -35,24 +36,23 @@
             </div>
             @if(Auth::check() == true)
                 @if(Auth::user()->username == 'osis')
-                    {!! Form::open(['url'=>route('activity.destroy', $albumcover->id), 'class'=>'action-bar', 'method'=>'DELETE', 'enctype'=>'multipart/form-data'])!!}
-                        <input class="btn" type="submit" value="Delete">
-                        {{ csrf_field() }}
-                    {!! Form::close() !!}
-                    {!! Form::open(['url'=>route('activity.update', $albumcover->id), 'method'=>'PATCH', 'enctype'=>'multipart/form-data']) !!}
-                        <div class="bottom-bar">
+                    <div class="action-bar">
+                        {!! Form::open(['url'=>route('activity.destroy', $albumcover->id), 'method'=>'DELETE', 'enctype'=>'multipart/form-data'])!!}
+                            <input class="btn" type="submit" id="destroy" data-url="{{ route('activity.destroy', $albumcover->id) }}" content="{{ csrf_token() }}" value="Delete">
+                            {{ csrf_field() }}
+                        {!! Form::close() !!}
+                        {!! Form::open(['url'=>route('activity.update', $albumcover->id), 'method'=>'PATCH', 'enctype'=>'multipart/form-data']) !!}
                             {!! Form::cInput('albumname', $albumcover->albumname) !!}
                             {{-- <input type="text" name="albumname" placeholder="Edit Description" value="{{ $albumcover->albumname }}"> --}}
                             {{-- <input type="file" name="album" value="{{ $albumcover->cover }}" accept="image/*" tabindex="-1"> --}}
                             <input class="exception-input" type="file" name="album" value="{{ $albumcover->cover }}">
-                        </div>
-                        <div class="action-bar">
-                            <button type="button" class="btn img exception-button">edit album cover</button>
+                            {{-- <button type="button" class="btn img exception-button">edit album cover</button> --}}
                             <input class="btn" type="submit" value="Edit">
-                        </div>
-                        {{ csrf_field() }}
-                    {!! Form::close() !!}
+                            {{ csrf_field() }}
+                        {!! Form::close() !!}
+                    </div>
                 @endif
             @endif
-        @endforeach
+        </div>
+    @endforeach
 @endsection

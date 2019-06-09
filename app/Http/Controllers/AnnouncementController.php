@@ -76,8 +76,10 @@ class AnnouncementController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $this->validate($request, [
-			'description'=>'required|max:5000'
+            'title'=>'required',
+			// 'description[0]'=>'required|max:5000'
 		]);
 
         foreach($request->Input('description') as $descriptions) {
@@ -86,6 +88,10 @@ class AnnouncementController extends Controller
                 $ann_desc->announcement_id = $request->Input('ann_id');
                 $ann_desc->description = $descriptions;
                 $ann_desc->save();
+            } else {
+                 $this->validate($request, [
+                    $descriptions =>'required|max:5000'
+                ]);
             }
         }
 
@@ -150,12 +156,15 @@ class AnnouncementController extends Controller
         return redirect('/announcement');
     }
 
-    public function destroy(Announcement $announcement)
+    public function destroy(Request $request, Announcement $announcement)
     {
         // dd($announcement->descs());
         $announcement->delete();
         $announcement->descs()->delete();
 
+        if ($request->ajax()) {
+            return response()->json($announcement);
+        }
         return redirect()->route('announcement.index');
     }
 
@@ -178,10 +187,13 @@ class AnnouncementController extends Controller
 		return redirect()->route('announcement.index');
     }
 
-    public function forcedelete($announcement)
+    public function forcedelete(Request $request, $announcement)
     {
         Announcement::where('id', $announcement)->forcedelete();
 
+        if ($request->ajax()) {
+            return response()->json($announcement);
+        }
 		return redirect()->route('announcement.deleted.get');
     }
 }

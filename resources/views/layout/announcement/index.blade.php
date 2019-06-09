@@ -42,7 +42,7 @@
                 <div class="action-bar">
                     <form action="{{ route('announcement.destroy', $self->id) }}" method="POST" class='delete'>
                         <input type="hidden" name="_method" value="delete">
-                        <input class="btn" type="submit" value="Delete">
+                        <input class="btn" type="submit" id="destroy" data-url="{{ route('announcement.destroy', $self->id) }}" content="{{ csrf_token() }}"value="Delete">
                         {{ csrf_field() }}
                     </form>
                     <form action="{{ route('announcement.edit', $self->id) }}" method="GET" class='edit'>

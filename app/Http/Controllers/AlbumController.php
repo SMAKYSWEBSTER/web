@@ -134,6 +134,9 @@ class AlbumController extends Controller
         $album->delete();
         $album_id = $request->Input('album_id');
 
+        if ($request->ajax()) {
+            return response()->json($album);
+        }
         return redirect()->route('album.show', ['album'=>$album_id]);
     }
 }
