@@ -2,7 +2,7 @@
 
 @section('content')
 
-        @if(Auth::check() == true && Auth::user()->username == 'tatausaha')
+        @if(Auth::check() == true && (Auth::user()->username == 'tatausaha' || Auth::user()->username == 'osis'))
             <form class="wrapper hero" action="{{ route('manage.index') }}" method="GET" id="back">
                 <input class="btn" type="submit" value="BACK">
                 {{ csrf_field() }}

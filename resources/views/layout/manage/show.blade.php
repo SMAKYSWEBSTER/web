@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-@if (Auth::check() == true && Auth::user()->username == 'tatausaha')
+@if (Auth::check() == true && (Auth::user()->username == 'tatausaha' || Auth::user()->username == 'osis'))
     <div class="wrapper manage full">
         <div class="profile-info">
             <p class="publisher">Nama: {{ $manage->name }}</p>
