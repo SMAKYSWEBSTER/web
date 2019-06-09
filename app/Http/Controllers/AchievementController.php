@@ -21,8 +21,6 @@ class AchievementController extends Controller
     {
         $this->validate($request, [
 			    'title' => 'required|max:100',
-			    'name' => 'required|max:100',
-                'rank' => 'required|numeric',
 	            'date' => 'required',
 		]);
     }

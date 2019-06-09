@@ -9,7 +9,7 @@
         </form>
 
         @foreach($contact_us as $contactus)
-            <div class="wrapper manage">
+            <div class="wrapper manage {{ $contactus->id }}">
                 <div class="profile-info">
                     <p class="publisher">Nama: {{ $contactus->name }}</p>
                     <p class="date-created">{{ $contactus->created_at }}</p>
@@ -24,13 +24,12 @@
                 </div>
                 <div class="action-bar">
                     <form action="{{ route('manage.show', $contactus->id) }}" method="GET" class='view'>
-                    <input class="btn" type="submit" value="View More">
-                    {{ csrf_field() }}
+                        <input class="btn" type="submit" value="View More">
+                        {{ csrf_field() }}
                     </form>
-                    <form action="{{ route('manage.destroy', $contactus->id) }}" method="POST" class='delete'>
-                    <input type="hidden" name="_method" value="delete">
-                    <input class="btn" type="submit" value="Read">
-                    {{ csrf_field() }}
+                    <form action="{{ route('manage.destroy', $contactus->id) }}" method="DELETE" class='delete'>
+                        <input class="btn" type="submit" id="destroy" data-url="{{ route('manage.destroy', $contactus->id) }}" content="{{ csrf_token() }}" value="Read">
+                        {{ csrf_field() }}
                     </form>
                 </div>
             </div>

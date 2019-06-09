@@ -84,11 +84,14 @@ class ManageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contactus $manage)
+    public function destroy(Request $request, Contactus $manage)
     {
         // dd($manage);
         $manage->delete();
 
+        if ($request->ajax()) {
+            return response()->json($manage);
+        }
         return redirect()->route('manage.index');
     }
 
@@ -106,10 +109,13 @@ class ManageController extends Controller
 		return redirect()->route('manage.index');
     }
 
-    public function forcedelete($manage)
+    public function forcedelete(Request $request, $manage)
     {
         Contactus::where('id', $manage)->forcedelete();
 
+        if ($request->ajax()) {
+            return response()->json($manage);
+        }
         return redirect()->route('manage.readed.get');
     }
 }

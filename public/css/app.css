@@ -5498,7 +5498,7 @@ footer > .copyright {
   cursor: pointer;
 }
 
-.wrapper.card > .card-body > .card-img::before {
+/*.wrapper.card > .card-body > .card-img::before {
   content: '';
   position: absolute;
   background-color: #000;
@@ -5516,7 +5516,7 @@ footer > .copyright {
 
 .wrapper.card > .card-body > .card-img:hover::before {
   opacity: 0;
-}
+}*/
 
 .wrapper.card > .card-body > .card-img > img {
   display: block;
@@ -5884,13 +5884,13 @@ footer > .copyright {
   justify-content: center;
 }
 
-.wrapper.polaroid > .polaroid-img {
+.wrapper.polaroid > div > .polaroid-img {
   height: 20rem;
   width: 20rem;
   margin: 1rem;
 }
 
-.wrapper.polaroid > .polaroid-img > img {
+.wrapper.polaroid > div > .polaroid-img > img {
   min-width: 100%;
   max-width: 100%;
   min-height: 100%;

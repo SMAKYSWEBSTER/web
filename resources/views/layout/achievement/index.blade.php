@@ -7,7 +7,7 @@
 
 @if(Auth::check() == true && Auth::user()->username == 'osis')
   <div class="wrapper card">
-    {!! Form::open(['url'=>route('achievement.store'),'class'=>'card-body', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+    {!! Form::open(['url'=>route('achievement.store'),'class'=>'card-body wrapped-height', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
       <div class="content">
         <h1>Upload Achievements</h1>
         {!! Form::cInput('title') !!}
@@ -29,7 +29,7 @@
   @foreach($achievements as $achievement)
       <div class="card-body">
         <div class="card-img">
-          <img src="{{ asset('achievements/'.$achievement->photo) }}" alt="No photo">
+          <img src="{{ asset('/achievements/'.$achievement->photo) }}" alt="No photo">
           <h2>{{ $achievement->title }}</h2>
         </div>
         <ul class="content">

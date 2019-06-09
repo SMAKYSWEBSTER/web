@@ -19,7 +19,7 @@
                     </form>
                     <form action="{{ route('announcement.forcedelete', $deleted->id) }}" method="POST" class='edit'>
                     	<input type="hidden" name="_method" value="delete">
-                        <input class="btn" type="submit" value="Delete">
+                        <input class="btn" type="submit" id="destroy" data-url="{{ route('announcement.forcedelete', $deleted->id) }}" content="{{ csrf_token() }}" value="Delete">
                         {{ csrf_field() }}
                     </form>
                 </div>

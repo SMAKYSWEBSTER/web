@@ -114,11 +114,14 @@ class ActivityController extends Controller
      * @param  \App\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Albumcover $activity)
+    public function destroy(Request $request, Albumcover $activity)
     {
         // dd($albumcover);
         $activity->delete();
 
+        if ($request->ajax()) {
+            return response()->json($activity);
+        }
         return redirect()->route('activity.index');
     }
 }
