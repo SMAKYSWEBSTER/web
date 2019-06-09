@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="wrapper banner">
-        @if(Auth::check() == true && Auth::user()->username == 'tatausaha')
+        @if(Auth::check() == true && (Auth::user()->username == 'tatausaha' || Auth::user()->username == 'osis'))
         <form class="wrapper hero" action="{{ route('manage.readed') }}" method="POST">
             <input class="btn" type="submit" value="VIEW READ">
             {{ csrf_field() }}

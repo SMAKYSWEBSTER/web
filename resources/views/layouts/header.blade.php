@@ -24,7 +24,7 @@
             <li><a href="{{ route('announcement.index') }}">Announcement</a></li>
             {{-- <li><a href="{{ route('layout.edufair') }}">Edufair 2018</a></li> --}}
             @if(Auth::check() == true)
-                @if(Auth::user()->username == 'tatausaha')
+                @if(Auth::user()->username == 'tatausaha' || Auth::user()->username == 'osis')
                     <li><a href="{{ route('manage.index') }}">Manage</a></li>
                 @else
                     {{-- <li><a href="{{ route('promnight.admin')}}">Prom Night 2019</a></li> --}}
