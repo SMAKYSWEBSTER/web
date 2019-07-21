@@ -35,12 +35,14 @@ class ContactusController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+
         $this->validate($request, [
 			'name'=>'required|max:30',
 			'email'=>'required|email',
 			'phone'=>'required|numeric',
 			'topic'=>'required',
-			'details[]'=>'required|max:5000'
+			// 'details[]'=>'required|max:5000'
 		]);
 
 		$contactus = new Contactus;

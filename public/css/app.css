@@ -6108,7 +6108,7 @@ footer > .copyright {
   }
 
   .wrapper.manage {
-    height: 15rem;
+    height: auto;
   }
 
   .wrapper.manage .action-bar {

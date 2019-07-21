@@ -34,7 +34,7 @@
     <div class="wrapper polaroid">
         @foreach($albums as $album)
             <div identity="{{ $album->id }}">
-                <div class="polaroid-img img">
+                <div class="polaroid-img">
                     <img src="{{ asset('/albumosis/small/'.$album->photos)}}">
                 </div>
                 @if(Auth::check() == true && Auth::user()->username == 'osis')
