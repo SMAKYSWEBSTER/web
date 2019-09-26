@@ -3,7 +3,7 @@
 @section('content')
   <div class="wrapper banner">
     <h1 class="spaced">EDUFAIR 2018</h1>
-    <img style="width: 500px;" src="{{ asset('/photos/edufair.jpg') }}" alt="Edufair">
+    <img src="{{ asset('/photos/edufair.jpg') }}" alt="Edufair">
     <h2>NON SCHOLAE, SED VITAE DISCIMUS</h2>
     <p>Kita belajar bukan untuk sekolah, melainkan untuk hidup</p>
 
